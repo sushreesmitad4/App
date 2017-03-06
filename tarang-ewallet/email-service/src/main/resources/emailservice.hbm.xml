@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tarang.ewallet.model">
+	<class name="EmailHistory" table="EmailHistory">
+		<id name="id" type="long" column="id">
+			<generator class="native"/>
+		</id>
+		<property name="emailTo" not-null="true" type="string" length="50"/>
+		<property name="message" not-null="true" type="string" length="1500"/>
+		<property name="subject" not-null="true" type="string" length="500"/>
+		<property name="creationDate" not-null="true" type="java.util.Date"/>
+		<property name="emailSentDate" type="java.util.Date"/>
+		<property name="emailStatus" not-null="true" type="boolean"/>
+		<property name="occurrence" type="int"/>
+		<property name="periority" type="int"/>
+	</class>
+	
+	<query name="getFailedEmailHistory" >
+		<![CDATA[from EmailHistory as emailHistory where emailHistory.emailStatus=false]]>
+	</query>
+	
+</hibernate-mapping>

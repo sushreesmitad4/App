@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.tarang.ewallet.model" >
+
+	<class name="AdminUser" table="AdminUser" >
+		<id name="id" type="long" >
+			<generator class="native" />
+		</id>
+		<property name="addressId" not-null="true" type="long" />
+		<property name="nameId" not-null="true" type="long" />
+		<property name="authenticationId" not-null="true" type="long" />
+		<property name="roleId" not-null="true" type="long" />
+		<property name="phoneIdOne" not-null="true" type="long" />
+	</class>
+
+
+	<class name="Role" table="Role" lazy="false" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="name" not-null="true" unique="true" length="50"
+			type="string" />
+		<property name="description" length="200" type="string" />
+		<property name="menuDetails" not-null="true" length="500" type="string" />
+	</class>
+	
+	<query name="getAdminUserList" >
+		<![CDATA[from AdminUser as adminuser]]>
+	</query>
+	
+	<query name="getAdminUserById" >
+		<![CDATA[from AdminUser as adminuser where adminuser.id=?]]>
+	</query>
+	
+	<query name="getAdminUserByauthId" >
+		<![CDATA[from AdminUser as adminuser where adminuser.authenticationId=?]]>
+	</query>
+	
+	<query name="getAdminUserByRoleId" >
+		<![CDATA[select count(*) from AdminUser as adminuser where adminuser.roleId=?]]>
+	</query>
+	
+	<query name="getRoleOnId" >
+		<![CDATA[from Role as role where role.id=?]]>
+	</query>
+
+    <query name="getFeedbackList" >
+		<![CDATA[from Feedback as feedback where feedback.parentId=?]]>
+	</query>
+	
+	<query name="getFeedback" >
+		<![CDATA[from Feedback as feedback where feedback.id=?]]>
+	</query>
+	
+</hibernate-mapping>

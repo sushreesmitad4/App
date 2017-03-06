@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+  	<bean name="pGService" class="com.tarang.ewallet.transaction.business.impl.PGServiceImpl" lazy-init="true"> 
+		<constructor-arg ref="pGRepository" />   
+	</bean>
+	
+	<bean name="pGRepository" class="com.tarang.ewallet.transaction.repository.impl.PGRepositoryImpl" lazy-init="true"> 
+  	     <constructor-arg ref="pGDao" />
+	</bean>
+	
+	<bean name="pGDao" class="com.tarang.ewallet.transaction.dao.impl.PGDaoImpl" lazy-init="true"> 
+  	    <constructor-arg ref="hibernateTemplate"/>  
+	</bean>
+	
+  	<bean name="walletFeeTaxService" class="com.tarang.ewallet.transaction.business.impl.WalletFeeTaxServiceImpl" lazy-init="true"> 
+		<constructor-arg ref="walletFeeTaxRepository" />   
+	</bean>
+	
+	<bean name="walletFeeTaxRepository" class="com.tarang.ewallet.transaction.repository.impl.WalletFeeTaxRepositoryImpl" lazy-init="true"> 
+  	     <constructor-arg ref="walletFeeTaxDao" />
+	</bean>
+	
+	<bean name="walletFeeTaxDao" class="com.tarang.ewallet.transaction.dao.impl.WalletFeeTaxDaoImpl" lazy-init="true"> 
+  	    <constructor-arg ref="hibernateTemplate"/>  
+	</bean>
+	
+	<bean name="requestMoneyService" class="com.tarang.ewallet.transaction.business.impl.RequestMoneyServiceImpl" lazy-init="true"> 
+		<constructor-arg ref="requestMoneyRepository" />   
+	</bean>
+	
+	<bean name="requestMoneyRepository" class="com.tarang.ewallet.transaction.repository.impl.RequestMoneyRepositoryImpl" lazy-init="true"> 
+  	     <constructor-arg ref="requestMoneyDao" />
+  	     <constructor-arg ref="transactionManager" />
+  	     <constructor-arg ref="commonService" />
+  	     <constructor-arg ref="transactionWalletService" />
+  	     <constructor-arg ref="velocityAndThresholdRepository" />
+  	     <constructor-arg ref="feeMgmtService" />
+  	     <constructor-arg ref="emailService" />
+		 <constructor-arg ref="emailTemplateService" />
+		 <constructor-arg ref="customerService" />
+	</bean>
+	
+	<bean name="requestMoneyDao" class="com.tarang.ewallet.transaction.dao.impl.RequestMoneyDaoImpl" lazy-init="true"> 
+  	    <constructor-arg ref="hibernateTemplate"/>  
+	</bean>
+
+  	<bean name="transactionWalletService" class="com.tarang.ewallet.transaction.business.impl.TransactionWalletServiceImpl" lazy-init="true"> 
+		<constructor-arg ref="transactionWalletRepository" />   
+	</bean>
+	
+	<bean name="transactionWalletRepository" class="com.tarang.ewallet.transaction.repository.impl.TransactionWalletRepositoryImpl" lazy-init="true"> 
+  	     <constructor-arg ref="transactionWalletDao" />
+  	     <constructor-arg ref="customerService" />
+  	     <constructor-arg ref="merchantService" />
+  	     <constructor-arg ref="commonService" />
+  	     <constructor-arg ref="feeMgmtService" />
+  	     <constructor-arg ref="walletFeeTaxRepository" />
+	</bean>
+	
+	<bean name="transactionWalletDao" class="com.tarang.ewallet.transaction.dao.impl.TransactionWalletDaoImpl" lazy-init="true"> 
+  	    <constructor-arg ref="hibernateTemplate"/>  
+	</bean>
+
+	<bean name="reloadMoneyService" class="com.tarang.ewallet.transaction.business.impl.ReloadMoneyServiceImpl" lazy-init="true"> 
+		<constructor-arg ref="reloadMoneyRepository" />
+	</bean>
+	
+	<bean name="reloadMoneyRepository" class="com.tarang.ewallet.transaction.repository.impl.ReloadMoneyRepositoryImpl" lazy-init="true">
+		<constructor-arg ref="transactionManager" />
+		<constructor-arg ref="transactionWalletService" /> 
+  	    <constructor-arg ref="reloadMoneyDao" />
+  	    <constructor-arg ref="commonService" />
+  	    <constructor-arg ref="httpService" />
+  	    <constructor-arg ref="cryptService" />
+  	    <constructor-arg ref="pGService" />
+	</bean>
+	
+	<bean name="reloadMoneyDao" class="com.tarang.ewallet.transaction.dao.impl.ReloadMoneyDaoImpl" lazy-init="true">
+		<constructor-arg ref="hibernateTemplate"/> 
+	</bean>
+	
+	<bean name="velocityAndThresholdService" class="com.tarang.ewallet.transaction.business.impl.VelocityAndThresholdServiceImpl" lazy-init="true"> 
+		<constructor-arg ref="velocityAndThresholdRepository" />
+	</bean>
+	
+	<bean name="velocityAndThresholdRepository" class="com.tarang.ewallet.transaction.repository.impl.VelocityAndThresholdRepositoryImpl" lazy-init="true">
+		<constructor-arg ref="velocityAndThresholdDao" />
+		<constructor-arg ref="transactionManager" /> 
+	</bean>
+	
+	<bean name="velocityAndThresholdDao" class="com.tarang.ewallet.transaction.dao.impl.VelocityAndThresholdDaoImpl" lazy-init="true">
+		<constructor-arg ref="hibernateTemplate"/> 
+	</bean>
+	<bean name="sendMoneyService" class="com.tarang.ewallet.transaction.business.impl.SendMoneyServiceImpl" lazy-init="true"> 
+		<constructor-arg ref="sendMoneyRepository" />
+	</bean>
+	
+	<bean name="sendMoneyRepository" class="com.tarang.ewallet.transaction.repository.impl.SendMoneyRepositoryImpl" lazy-init="true">
+  	    <constructor-arg ref="sendMoneyDao" /> 
+  	    <constructor-arg ref="transactionWalletRepository" /> 
+  	    <constructor-arg ref="velocityAndThresholdRepository" />
+  	    <constructor-arg ref="commonService" />
+  	    <constructor-arg ref="emailService" />
+		<constructor-arg ref="emailTemplateService" />
+		<constructor-arg ref="feeMgmtService" />
+		<constructor-arg ref="transactionManager" />
+	</bean>
+	
+	<bean name="sendMoneyDao" class="com.tarang.ewallet.transaction.dao.impl.SendMoneyDaoImpl" lazy-init="true">
+		<constructor-arg ref="hibernateTemplate"/> 
+	</bean>
+	
+	<bean name="addMoneyService" class="com.tarang.ewallet.transaction.business.impl.AddMoneyServiceImpl" lazy-init="true"> 
+		<constructor-arg ref="addMoneyRepository" />
+	</bean>
+	
+	<bean name="addMoneyRepository" class="com.tarang.ewallet.transaction.repository.impl.AddMoneyRepositoryImpl" lazy-init="true">
+		<constructor-arg ref="transactionManager" />
+		<constructor-arg ref="transactionWalletService" /> 
+  	    <constructor-arg ref="addMoneyDao" />
+  	    <constructor-arg ref="commonService" />
+  	    <constructor-arg ref="httpService" />
+  	    <constructor-arg ref="cryptService" />
+  	    <constructor-arg ref="pGService" />
+	</bean>
+	
+	<bean name="addMoneyDao" class="com.tarang.ewallet.transaction.dao.impl.AddMoneyDaoImpl" lazy-init="true">
+		<constructor-arg ref="hibernateTemplate"/> 
+	</bean>
+	
+</beans>

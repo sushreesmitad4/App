@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.tarang.ewallet.model" >
+
+	<class name="Audit" table="Audits" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="authId" not-null="true" type="long" />
+		<property name="emailId" not-null="true" type="string" length="40" />
+		<property name="userType" not-null="true" type="string" length="2" />
+		<property name="moduleName" not-null="true" type="string" length="40" />
+		<property name="status" not-null="true" type="long" />
+		<property name="creationDate" not-null="true" type="java.util.Date" />
+		<list name="auditFields" cascade="all" inverse="true" >
+		   <key column="audits" ></key>
+		   <index column="fieldName" ></index>
+		   <one-to-many class="AuditField" ></one-to-many>
+		</list>
+	</class>
+	
+	<class name="AuditField" table="AuditField" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<many-to-one name="audits" column="audits" not-null="true" />
+		<property name="fieldName" not-null="true" type="string" />
+		<property name="oldValue" type="string" />
+		<property name="newValue" type="string" />
+	</class>
+	
+	<query name="getAuditTrailById" >
+		<![CDATA[from Audit as audits where audits.id=?]]>
+	</query>
+	
+	<query name="findAuditFieldsById" >
+ 	 <![CDATA[from AuditField as afield where afield.audits.id=? order by id]]>
+ 	</query>
+ 	
+ 	<query name="findAllAuditObjects" >
+ 	 <![CDATA[from Audit order by id]]>
+ 	</query>
+ 	
+</hibernate-mapping>

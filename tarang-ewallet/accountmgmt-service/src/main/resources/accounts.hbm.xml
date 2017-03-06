@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.tarang.ewallet.model" >
+
+	<class name="Account" table="Account" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		
+		<property name="atype" type="string" />
+		<!-- ipAddress is for web transaction -->
+		<property name="ipAddress" type="string" />
+		<!-- simNumber and imeiNumber is for web transaction -->
+		<property name="simNumber" type="string" length="50"/>
+		<property name="imeiNumber" type="string" length="50"/>
+		
+		<property name="typeOfRequest" not-null="true" type="long" />
+		<property name="authId" type="long" /> 
+		<property name="accountHolderName" type="string" /> 
+		<property name="status" type="long" /> 
+		<property name="defaultAccount" type="boolean" /> 
+		<property name="deletedStatus" type="long" /> 
+		<property name="creationDate" type="java.util.Date" /> 
+		<property name="jointAccount" type="boolean" /> 
+		
+		<joined-subclass name="Bank" table="Bank" >     
+			<key column="bid" ></key>            
+			<property name="country" type="long" />
+			<property name="bankAccountType" type="long" />                 
+			<property name="bankName" type="string" /> 
+			<property name="sortCode" type="string" /> 
+			<property name="accountNumber" type="string" /> 
+			<property name="bankAddress" type="string" /> 
+			<property name="holdBank" type="boolean" /> 
+		</joined-subclass> 
+
+		<joined-subclass name="Card" table="Card" >   
+			<key column="cid" ></key>            
+			<property name="cardType" type="long" /> 
+			<property name="cardNumber" type="string" not-null="true" /> 
+			<property name="cardExpairyDate" type="string" />
+			<property name="addressId" type="long" />
+			<property name="sameAsProfileAddress" type="boolean" /> 
+			<property name="cardBin" type="string" length="6"/> 
+		</joined-subclass> 
+	</class>
+	
+	<query name="getAccountById" >
+		<![CDATA[from Account as account where account.id=?]]>
+	</query>
+
+	<query name="getAccountsByAuthenticationId" >
+		<![CDATA[from Account as account where account.deletedStatus=? and account.authId=?]]>
+	</query>
+
+	<query name="getAccountsCountByAuthenticationId" >
+		<![CDATA[select count(*) from Account as account where account.deletedStatus=? and account.authId=?]]>
+	</query>
+
+	<query name="getAllAccountsByAuthenticationId" >
+		<![CDATA[from Account as account where account.authId=? order by account.status desc]]>
+	</query>
+
+	<query name="getDefaultAccount" >
+		<![CDATA[from Account as account where account.defaultAccount=? and account.authId=?]]>
+	</query>
+	
+	<query name="getCardByCardNumber" >
+		<![CDATA[from Card as card where card.deletedStatus=? and card.authId=? and card.cardNumber=?]]>
+	</query>
+	
+	<query name="getBankByAccountNumber" >
+		<![CDATA[from Bank as bank where bank.deletedStatus=? and bank.authId=? and bank.accountNumber=? and bank.sortCode=?]]>
+	</query>
+	
+	<query name="isExistBankAccount" >
+		<![CDATA[select bank from Bank as bank, Authentication as auth where bank.accountNumber=? and bank.sortCode=? and bank.authId=auth.id and auth.userType=?]]>
+	</query>
+	
+	<query name="bankAccountExistWithSameUser" >
+		<![CDATA[from Bank as b where b.accountNumber=? and b.sortCode=? and b.authId=? and b.deletedStatus = ?]]>
+	</query>
+	<query name="getTotalBankAccouts" >
+		<![CDATA[select count(*) from Bank as b, Authentication as au where b.accountNumber=? and b.sortCode=? and b.authId=au.id and au.userType=? and b.deletedStatus = ?]]>
+	</query>		
+	
+	<query name="cardAccountExistWithSameUser" >
+		<![CDATA[from Card as c where c.cardNumber=? and c.authId=? and c.deletedStatus = ?]]>
+	</query>
+	<query name="getTotalCardAccounts" > 
+		<![CDATA[select count(*) from Card as c, Authentication as au where c.deletedStatus = ? and c.cardNumber=? and c.authId=au.id and au.userType=?]]>
+	</query>
+	<query name="getAllCardAccountsByAuthId" > 
+		<![CDATA[from Account as account where account.atype=? and account.deletedStatus=? and account.authId=?]]>
+	</query>
+	 
+	
+</hibernate-mapping>

@@ -1,0 +1,74 @@
+<%@ page import="com.tarang.ewallet.walletui.controller.AttributeValueConstants" %>
+<div class="pagelayout">
+		<div class="block" id="sample">
+			<h2><span align="center">Add Money</span></h2>
+			<h2><span align="center" id="amounterror" class="error" ></span></h2>
+			<table class="form" style="width: 40%" align="center">
+				<!-- Add Money -->
+				<tr>
+					<td></td>
+					<td class="formerror"></td>
+				</tr>
+				<tr>
+					<td class="formtd"></td>
+					<td><label for="addmoney">Add Money :</label>&nbsp;&nbsp;
+						<input type="text" name="addmoney" id="addmoney" />
+				</tr>
+				<tr>
+					<td class="formtd"></td>
+					<td class="formtd"></td>
+				</tr>
+				<tr>
+					<td class="formtd"></td>
+					<td class="formtd"></td>
+				</tr>
+				<tr>
+					<td class="formtd"></td>
+					<td class="formtd"><button id="rzp-button1">Add Money</button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var amount = "";
+document.getElementById("amounterror").innerHTML = " ";
+var regex  = /^[0-9]*$/;
+document.getElementById('rzp-button1').onclick = function(e){
+amount = document.getElementById('addmoney').value;
+if (!amount == '' && regex.test(amount)){
+	document.getElementById("amounterror").innerHTML = " ";
+	var options = {
+		    "key": "rzp_test_W3cnlRtinVCThn",
+		    "amount": amount.toString() + "00", // 2000 paise = INR 20
+		    "name": '<%=session.getAttribute("name")%>',
+		    "description": "Add money in to your wallet account",
+		    "image": '<%=request.getContextPath()%>/img/wallet.png',
+		    "handler": function (response){
+			    //Called server call here
+		        alert(response.razorpay_payment_id);
+		    },
+		    "prefill": {
+		        "name": "Kedar Nath Das",
+		        "email": "kedarnathd@tarangtech.com",
+		        "contact": "9060437025"
+		    },
+		    "notes": {
+		        "address": "BTM, Bangalore 560029"
+		    },
+		    "theme": {
+		        //"color": "#F37254"
+		        "color": "#4289f4"
+		    }
+		};
+		var rzp1 = new Razorpay(options);
+	    rzp1.open();
+	    e.preventDefault();
+	}else{
+		document.getElementById("amounterror").innerHTML = "Please enter correct amount";
+		return;
+	}
+
+}
+</script>
+

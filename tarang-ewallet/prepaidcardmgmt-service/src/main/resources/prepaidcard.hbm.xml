@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.tarang.ewallet.model" >
+
+	<class name="PrepaidCardAccount" table="PrepaidCardAccount" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="customerNumber"  type="long" unique="true" not-null="true"/>
+		<property name="atype" type="string" />
+		<!-- ipAddress is for web transaction -->
+		<property name="ipAddress" type="string" />
+		<!-- simNumber and imeiNumber is for web transaction -->
+		<property name="simNumber" type="string" length="50"/>
+		<property name="imeiNumber" type="string" length="50"/>
+		
+		<property name="typeOfRequest" not-null="true" type="long" />
+		<property name="authId" type="long" /> 
+		<property name="accountHolderName" type="string" /> 
+		<property name="status" type="long" /> 
+		<property name="defaultAccount" type="boolean" /> 
+		<property name="deletedStatus" type="long" /> 
+		<property name="creationDate" type="java.util.Date" /> 
+		<property name="jointAccount" type="boolean" /> 
+		
+		<joined-subclass name="PrepaidBank" table="PrepaidBank" >     
+			<key column="bid" ></key>            
+			<property name="country" type="long" />
+			<property name="bankAccountType" type="long" />                 
+			<property name="bankName" type="string" /> 
+			<property name="sortCode" type="string" /> 
+			<property name="accountNumber" type="string" /> 
+			<property name="bankAddress" type="string" /> 
+			<property name="holdBank" type="boolean" /> 
+		</joined-subclass> 
+
+		<joined-subclass name="PrepaidCard" table="PrepaidCard" >   
+			<key column="cid" ></key>            
+			<property name="cardType" type="long" /> 
+			<property name="cardNumber" type="string" not-null="true" /> 
+			<property name="cardExpairyDate" type="string" not-null="true"/>
+			<property name="addressId" type="long" not-null="true"/>
+			<property name="sameAsProfileAddress" type="boolean" not-null="true"/> 
+			<property name="cardBin" type="string" length="6" not-null="true"/>
+			<property name="cvv" type="string" not-null="true"/> 
+		</joined-subclass> 
+	</class>
+	
+	<query name="getPrepaidCardByCustomer" >
+		<![CDATA[from PrepaidCardAccount as prepaidCardAccount where prepaidCardAccount.customerNumber=?]]>
+	</query>
+</hibernate-mapping>

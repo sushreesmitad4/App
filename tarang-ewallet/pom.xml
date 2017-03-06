@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>tarang.ewallet</groupId>
+  <artifactId>wallet</artifactId>
+  <version>5.8.8.RELEASE</version>
+  <packaging>pom</packaging>
+  <name>ewallet</name>
+  <modules>
+  	<module>crypt-service</module>
+  	<module>email-service</module>
+  	<module>sms-service</module>
+  	<module>util-service</module>
+  	<module>masterdata-service</module>
+  	<module>common-service</module>
+  	<module>notification-service</module>
+	<module>accountmgmt-service</module>
+  	<module>customer-service</module>
+  	<module>merchant-service</module>
+  	<module>usermgmt-service</module>
+  	<module>http-service</module>
+  	<module>feemgmt-service</module>
+  	<module>transaction-service</module>
+  	<!--<module>web-service</module> -->
+  	<module>accountcloser-service</module>
+  	<module>dispute-service</module>
+  	<module>audittrail-service</module>
+  	<module>reports-service</module>
+    <module>reconcile-service</module>
+  	<module>scheduler-service</module>
+  	<module>wallet-ui</module>
+  	<module>initial-datasetup</module>
+  	<module>fraudcheck-service</module>
+  	<module>prepaidcardmgmt-service</module>
+  </modules>
+</project>

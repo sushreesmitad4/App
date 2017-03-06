@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.tarang.ewallet.model" >
+
+	<class name="Authentication" table="Authentication" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="ipAddress" type="string" length="21" />
+		<properties name="authentication_emailid_key" unique="true" >
+			<property name="userType" not-null="true" type="string" length="1" />
+			<property name="emailId" not-null="true" type="string" length="50" />			
+		</properties>
+		<property name="password" not-null="true" type="string" length="500" />
+		<property name="hints" not-null="true" type="long" />
+		<property name="resetPassword" type="boolean" />
+		<property name="lastLogin" type="java.util.Date" />
+		<property name="active" type="boolean" />
+		<!-- <property name="deleted" type="boolean" /> -->
+		<property name="blocked" type="boolean" />
+		<property name="attempts" type="integer" />
+		<property name="status" not-null="true" type="long" />
+		<property name="emailVarification" type="boolean" />
+		<property name="loginStatus" type="boolean" />
+		<property name="kycRequired" type="boolean" />
+		<property name="creationDate" type="java.util.Date" />
+		<property name="ipAddressCheck" type="boolean" />
+		<property name="emailPatternCheck" type="boolean" />
+		<property name="chargeBackCheck" type="boolean" />
+		<property name="updateReason" type="string" length="1000" />
+		<!-- added columns for mobile wallet -->
+		<property name="typeOfRequest" type="long" length="10" />
+		<property name="mPin" type="string" length="50" />
+		<property name="mWalletActicationDate" type="java.util.Date" />
+		<property name="mWalletDeacticationDate" type="java.util.Date" />
+		<property name="isMwalletActive" type="boolean" />
+		<property name="mPinBlocked" type="boolean" />
+		<property name="mPinAttempts" type="integer" />
+		<property name="mPinBlockedDate" type="java.util.Date" />
+		<properties name="unique-mobile-reg" unique="true" >
+			<property name="msisdnNumber" type="string" length="50" />
+			<property name="simNumber" type="string" length="50" />
+			<property name="imeiNumber" type="string" length="50" />
+		</properties>
+	</class>
+
+	<class name="PasswordHistory" table="PasswordHistory" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+	  	<property name="authentication" not-null="true" type="long" />
+	  	<property name="password" not-null="true" type="string" length="500" />
+	  	<property name="creationDate" not-null="true" type="java.util.Date" />
+	</class>
+	
+	<class name="PersonName" table="PersonName" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="firstName" not-null="false" type="string" length="30" />
+		<property name="lastName" not-null="false" type="string" length="30" />
+	</class>
+	
+	<class name="Address" table="Address" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="addressOne" column="address1" not-null="true" type="string" length="100" />
+		<property name="addressTwo" column="address2" type="string" length="100" />
+		<property name="city" not-null="true" type="string" length="25" />
+		<property name="region" type="long" />
+		<property name="country" not-null="true" type="long" />
+		<property name="zipcode" type="string" length="16" />
+	</class>
+	
+	<class name="Hints" table="Hints" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="hintQuestion1"  not-null="true" type="long" />
+		<property name="hintAnswer1" not-null="true" type="string" length="20" />
+	</class>
+	
+	<class name="PhoneNumber" table="PhoneNumber" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<properties name="unique-phone" unique="true" >
+			<property name="code"  not-null="true" type="string" length="5" />
+			<property name="pnumber" not-null="true" type="string" length="18" />
+		</properties>
+	</class>
+	
+	
+	<class name="Feedback" table="Feedback" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="parentId" type="long" />
+		<property name="querryType" type="long" />
+		<property name="subject" type="string" length="100" />
+		<property name="message" type="string" length="1000" />
+		<property name="dateAndTime" type="java.util.Date" />
+		<property name="userType" type="string" length="1" />
+		<property name="userId" type="long" />
+		<property name="responseSender" type="long" />
+		<property name="responseDate" type="timestamp" />
+		<property name="responseMessage" type="string" length="1000" />
+		<property name="userMail" type="string" length="40" />
+	</class>
+	
+	<class name="Preferences" table="Preferences" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="authentication" type="long" />
+		<property name="language" type="long" />
+		<property name="currency" type="long" />
+	</class>
+	
+	<class name="UserWallet" table="UserWallet" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<properties name="unique-userwallet" unique="true" >
+			<property name="authId"  not-null="true" type="long" />
+			<property name="currency" not-null="true" type="long" />
+		</properties>
+		<property name="amount" not-null="true" type="double" />
+		<property name="creationDate" not-null="true" type="java.util.Date" />
+	</class>
+	
+	<class name="NonRegisterWallet" table="NonRegisterWallet" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="email"  not-null="true"  type="string" length="50" />
+		<property name="currency" not-null="true" type="long" />
+		<property name="amount" not-null="true" type="double" />
+		<property name="creationDate" not-null="true" type="java.util.Date" />
+		<property name="txnId" not-null="true" type="long" />
+		<property name="register" not-null="true" type="long" />
+	</class>
+	
+	<class name="UserIP" table="UserIP" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<properties name="unique-userip" unique="true" >
+			<property name="authId"  not-null="true" type="long" />
+			<property name="ipAddress" not-null="true" type="string" />
+		</properties>
+			<property name="code" type="string" />
+		<property name="currentDate" not-null="true" type="java.util.Date" />
+	</class>
+		
+	<query name="getAddress" >
+		<![CDATA[from Address as address]]>
+	</query>
+		<query name="getPersonNameById" >
+		<![CDATA[from PersonName as personName where personName.id=?]]>
+	</query>
+	<query name="getAddressById" >
+		<![CDATA[from Address as address where address.id=?]]>
+	</query>
+	<query name="getHintsById" >
+		<![CDATA[from Hints as hints where hints.id=?]]>
+	</query>
+	<query name="getPhoneById" >
+		<![CDATA[from PhoneNumber as pnumber where pnumber.id=?]]>
+	</query>
+	<query name="getAuthenticationById" >
+		<![CDATA[from Authentication as au where au.id=?]]>
+	</query>
+	<query name="findAuthenticatonByEmail" >
+ 	 <![CDATA[from Authentication as au where au.emailId=?]]>
+ 	</query>
+	<query name="findAuthenticatonByEmailAndUserType" >
+ 	 <![CDATA[from Authentication as au where au.emailId=? and au.userType=?]]>
+ 	</query>
+	<query name="findAuthenticatonByPhoneNO" >
+		<![CDATA[from PhoneNumber as pn where pn.pnumber=?]]>
+	</query>
+	<query name="findAuthenticatonwithEmailVarified" >
+ 	 <![CDATA[from Authentication as au where au.emailVarification=true and au.emailId=? and au.userType=?]]>
+ 	</query>	
+ 	<query name="findAuthenticatonwithAccountDeleted" >
+ 	 <![CDATA[from Authentication as au where au.status=? and au.emailId=? and au.userType=?]]>
+ 	</query>
+ 	<query name="findAuthenticatonwithEmailNotVarified" >
+ 	 <![CDATA[from Authentication as au where au.emailVarification=false and au.emailId=? and au.userType=?]]>
+ 	</query>
+ 	<query name="findAuthenticatonwithEmail" >
+ 	 <![CDATA[from Authentication as au where au.emailId=?]]>
+ 	</query>
+ 	<query name="findPasswordHistoryByAuthId" >
+ 	 <![CDATA[from PasswordHistory as ph where ph.authentication=? order by creationDate]]>
+ 	</query>
+ 	<query name="getPrefereances" >
+ 	 <![CDATA[from Preferences as preferences where preferences.authentication=?]]>
+ 	</query>
+ 	 <query name="getTotalNoOfCustomersOrMerchants" >
+ 	 <![CDATA[select count(*) from Authentication as au where emailVarification=true and au.userType=?]]>
+ 	</query>
+	<query name="getMasterAmountWalletByCurrencyId" >
+		<![CDATA[from MasterAmountWallet as mw where mw.currency=?]]>
+	</query>
+	<query name="getMasterFeeWalletByCurrencyId" >
+		<![CDATA[from MasterFeeWallet as mw where mw.currency=?]]>
+	</query>
+	<query name="getMasterTaxWalletByCurrencyId" >
+		<![CDATA[from MasterTaxWallet as mw where mw.currency=?]]>
+	</query>
+	<query name="getUserWalletByCurrency" >
+		<![CDATA[from UserWallet as uw where uw.authId=? and uw.currency=?]]>
+	</query>
+	<query name="getCustomersTotalAmountsByCountry" >
+		<![CDATA[select sum(uw.amount),uw.currency from UserWallet uw, Authentication a where uw.authId = a.id and a.userType=? group by (uw.currency)]]>
+	</query>
+	<query name="getNonRegisterWalletsByemail" >
+ 	 <![CDATA[from NonRegisterWallet as nr where nr.email=?]]>
+ 	</query>
+ 	<query name="getCustomerBalanceBycountryId" >
+		<![CDATA[select sum(uw.amount),uw.currency from UserWallet uw, Authentication au where uw.authId = au.id and au.id=? group by (uw.currency)]]>
+	</query>
+	<query name="getAllUserWalletsByAuthId" >
+		<![CDATA[from UserWallet as uw where uw.authId=?]]>
+	</query>
+	<query name="findUserIpExistOrNot" >
+ 	 <![CDATA[from UserIP as ip where ip.authId=? and ip.ipAddress=?]]>
+ 	</query>
+ 	<query name="getTxnIdsForNonRegisterWallets">
+		<![CDATA[select nonRegisterWallet.txnId from NonRegisterWallet as nonRegisterWallet where nonRegisterWallet.register=? and nonRegisterWallet.creationDate < ?]]>
+	</query>
+	<query name="getNonRegisterWalletByTxnId">
+		<![CDATA[from NonRegisterWallet as nonRegisterWallet where nonRegisterWallet.txnId=?]]>
+	</query>
+	<query name="getUserEmailById" >
+		<![CDATA[select au.emailId from Authentication as au where au.id=?]]>
+	</query>
+</hibernate-mapping>

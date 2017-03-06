@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5"> 
+
+<!--  default url = http://localhost:8080/wallet-ui/ on tomcat -->
+	<display-name>Wallet UI</display-name> 
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath*:wallet-applicationContext.xml</param-value>
+    </context-param>
+	<servlet> 
+		<servlet-name>wallet</servlet-name> 
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> 
+		<load-on-startup>1</load-on-startup>
+	</servlet> 
+	<servlet-mapping> 
+		<servlet-name>wallet</servlet-name>
+		<url-pattern>/tarang/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Jersy Web Services Servlet starting -->
+	<servlet>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>com.tarang.mwallet.rest.services</param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jersey-serlvet</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+	<!-- Jersy Web Services Servlet ending -->
+	
+	<servlet>
+    	<servlet-name>jaxws-servlet</servlet-name>
+    	<servlet-class>
+    		com.sun.xml.ws.transport.http.servlet.WSSpringServlet
+    	</servlet-class>
+    	<load-on-startup>1</load-on-startup>
+  	</servlet> 
+	
+	<servlet-mapping>
+        <servlet-name>jaxws-servlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+    
+	<servlet> 
+		<servlet-name>ImgServlet</servlet-name> 
+		<servlet-class>com.tarang.ewallet.walletui.controller.ImgServlet</servlet-class> 
+		<load-on-startup>1</load-on-startup>
+	</servlet> 
+	<servlet-mapping> 
+		<servlet-name>ImgServlet</servlet-name>
+		<url-pattern>/imgservlet/*</url-pattern>
+	</servlet-mapping>
+	    
+	<listener>
+	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+	    <listener-class>com.tarang.ewallet.walletui.listener.MasterDataContextListener</listener-class>
+	</listener>
+	<listener>
+  		<listener-class>com.tarang.ewallet.walletui.listener.WalletSessionListener</listener-class> 
+  	</listener>
+	<welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>/index.html</welcome-file>
+    </welcome-file-list>
+
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/pages/badRequestError.jsp</location>
+	</error-page>
+	<error-page>
+  		<error-code>400</error-code>
+  		<location>/pages/badRequestError.jsp</location>
+ 	</error-page>
+	<error-page>
+  		<error-code>404</error-code>
+  		<location>/pages/badRequestError.jsp</location>
+ 	</error-page>
+ 	<error-page>
+  		<error-code>405</error-code>
+  		<location>/pages/badRequestError.jsp</location>
+ 	</error-page>
+	<error-page>
+    	<exception-type>java.lang.Throwable</exception-type >
+    	<location>/pages/ShowError.jsp</location>
+	</error-page>
+</web-app>

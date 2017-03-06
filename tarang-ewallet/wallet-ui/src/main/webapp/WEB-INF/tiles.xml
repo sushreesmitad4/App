@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?> 
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+	"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">  
+<tiles-definitions> 
+
+	<definition name="wallet.def" template="/pages/template.jsp">
+		<put-attribute name="title" value="Tarang Wallet"/>
+		<put-attribute name="header" value="/pages/header.jsp" />
+		<put-attribute name="menubar" value="/pages/menubar.jsp" />
+		<put-attribute name="body" value="/pages/body.jsp" />
+		<put-attribute name="footer" value="/pages/footer.jsp" />	
+	</definition>
+	
+	<definition name="customer" extends="wallet.def">
+		<put-attribute name="title" value="Customer"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/default.jsp" />
+	</definition>
+	<definition name="wallet.customer.login" extends="wallet.def">
+		<put-attribute name="title" value="Customer Login"/>
+		<put-attribute name="menubar" value="/pages/customer/loginmenubar.jsp" />
+		<put-attribute name="body" value="/pages/customer/login.jsp" />
+	</definition>
+	<definition name="customer.registration.one" extends="wallet.def">
+		<put-attribute name="title" value="Customer Registration"/>
+		<put-attribute name="menubar" value="/pages/customer/registrationmenubar.jsp" />	
+		<put-attribute name="body" value="/pages/customer/registrationone.jsp" />
+	</definition>
+	<definition name="customer.registration.two" extends="customer">
+		<put-attribute name="title" value="Customer Registration"/>
+		<put-attribute name="header" value="/pages/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/registrationmenubar.jsp" />	
+		<put-attribute name="body" value="/pages/customer/registrationtwo.jsp" />
+	</definition>
+	<definition name="customer.registration.success" extends="customer">
+		<put-attribute name="title" value="Customer Registration Success"/>
+		<put-attribute name="body" value="/pages/customer/registrationsuccess.jsp" />
+	</definition>
+	
+	<definition name="customer.sendmoney" extends="customer">
+		<put-attribute name="title" value="Customer Send Money"/>
+		<put-attribute name="body" value="/pages/transaction/p2pSendMoney.jsp" />
+	</definition>
+	
+	<definition name="customer.relodemoney" extends="customer">
+		<put-attribute name="title" value="Customer Relode Money"/>
+		<put-attribute name="body" value="/pages/transaction/relodemoney.jsp" />
+	</definition>
+	
+	<definition name="customer.addmoney" extends="customer">
+		<put-attribute name="title" value="Customer Add Money"/>
+		<put-attribute name="body" value="/pages/transaction/addmoney.jsp" />
+	</definition>
+	
+	<definition name="merchant.addmoney" extends="merchant">
+		<put-attribute name="title" value="Merchant Add Money"/>
+		<put-attribute name="body" value="/pages/transaction/addmoney.jsp" />
+	</definition>
+
+    <definition name="customer.otp" extends="customer">
+		<put-attribute name="title" value="Send Otp"/>
+		<put-attribute name="body" value="/pages/customer/sendotp.jsp" />
+	</definition>
+
+	<definition name="merchant" extends="wallet.def">
+		<put-attribute name="title" value="Merchant Account"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/default.jsp" />
+	</definition>
+
+	<definition name="wallet.merchant.login" extends="wallet.def">
+		<put-attribute name="title" value="Merchant Login"/>
+		<put-attribute name="menubar" value="/pages/merchant/loginmenubar.jsp" />
+		<put-attribute name="body" value="/pages/merchant/login.jsp" />
+	</definition>
+
+	<definition name="merchant.registration" extends="merchant">
+		<put-attribute name="title" value="Merchant Registration"/>
+		<put-attribute name="header" value="/pages/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/registrationmenubar.jsp" />
+		<put-attribute name="body" value="/pages/merchant/registration.jsp" />
+	</definition>
+	
+	<definition name="merchant.registration.businfo" extends="merchant">
+		<put-attribute name="title" value="Merchant Registration"/>
+		<put-attribute name="header" value="/pages/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/registrationmenubar.jsp" />
+		<put-attribute name="body" value="/pages/merchant/registrationbusinfo.jsp" />
+	</definition>
+	
+	<definition name="merchant.registration.success" extends="merchant">
+		<put-attribute name="title" value="Merchant Registration"/>
+		<put-attribute name="body" value="/pages/merchant/registrationsuccess.jsp" />
+	</definition>
+
+	<definition name="admin" extends="wallet.def">
+		<put-attribute name="title" value="Admin Account"/>
+		<put-attribute name="header" value="/pages/admin/header.jsp" />
+		<put-attribute name="menubar" value="/pages/admin/menubar.jsp" />
+		<put-attribute name="body" value="/pages/admin/default.jsp" />
+	</definition>
+
+	 <definition name="admin.login" extends="wallet.def">
+		<put-attribute name="title" value="Admin Login"/>
+		<put-attribute name="menubar" value="/pages/admin/loginmenubar.jsp" />
+		<put-attribute name="body" value="/pages/admin/login.jsp" />
+	</definition>
+	<definition name="admin.response.feedback.list" extends="admin">
+		<put-attribute name="title" value="Feedback"/>
+		<put-attribute name="body" value="/pages/admin/responsefeedback.jsp" />
+	</definition>
+	<definition name="admin.response.feedback" extends="admin">
+		<put-attribute name="title" value="Feedback View"/>
+		<put-attribute name="body" value="/pages/admin/responsefeedbackview.jsp" />
+	</definition>
+	<definition name="admin.feedback.reply" extends="admin">
+		<put-attribute name="title" value="Feedback Reply"/>
+		<put-attribute name="body" value="/pages/admin/feedbackreply.jsp" />
+	</definition>
+
+	<definition name="admin.merchant.mgmt.view" extends="admin">
+		<put-attribute name="title" value="Merchant Management"/>
+		<put-attribute name="body" value="/pages/admin/merchantmgmtview.jsp" />
+	</definition>
+	
+	<definition name="admin.merchant.mgmt.edit" extends="admin">
+		<put-attribute name="title" value="Merchant Management"/>
+		<put-attribute name="body" value="/pages/admin/merchantmgmtedit.jsp" />
+	</definition>
+	
+	<definition name="admin.merchant.update.profile" extends="merchant">
+		<put-attribute name="title" value="Merchant Profile"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/merchant/profile.jsp" />
+	</definition>
+
+	<definition name="admin.roles" extends="admin">
+		<put-attribute name="title" value="Roles"/>
+		<put-attribute name="body" value="/pages/admin/roles.jsp" />
+	</definition>
+
+	<definition name="admin.addrole" extends="admin">
+		<put-attribute name="title" value="Add Role"/>
+		<put-attribute name="body" value="/pages/admin/addrole.jsp" />
+	</definition>
+
+	<definition name="admin.editrole" extends="admin">
+		<put-attribute name="title" value="Edit Role"/>
+		<put-attribute name="body" value="/pages/admin/editrole.jsp" />
+	</definition>
+
+	<definition name="admin.success" extends="admin">
+		<put-attribute name="title" value="Role Success"/>
+		<put-attribute name="body" value="/pages/admin/success.jsp" />
+	</definition>
+
+	<definition name="admin.customers" extends="admin">
+		<put-attribute name="title" value="Customer Management"/>
+		<put-attribute name="body" value="/pages/admin/customers.jsp" />
+	</definition>
+	<definition name="admin.customer" extends="admin">
+		<put-attribute name="title" value="Customer"/>
+		<put-attribute name="body" value="/pages/admin/customer.jsp" />
+	</definition>
+
+	<definition name="admin.merchants" extends="admin">
+		<put-attribute name="title" value="Merchant Management"/>
+		<put-attribute name="body" value="/pages/admin/merchants.jsp" />
+	</definition>
+	<definition name="admin.users" extends="admin">
+		<put-attribute name="title" value="Admin Management"/>
+		<put-attribute name="body" value="/pages/admin/adminusers.jsp" />
+	</definition>
+	<definition name="admin.adduser" extends="admin">
+		<put-attribute name="title" value="Admin User Add"/>
+		<put-attribute name="body" value="/pages/admin/addadminuser.jsp" />
+	</definition>
+	<definition name="admin.edituser" extends="admin">
+		<put-attribute name="title" value="Admin User Edit"/>
+		<put-attribute name="body" value="/pages/admin/editadminuser.jsp" />
+	</definition>
+
+	<!-- for feemgmt -->
+	<definition name="admin.fee.fin" extends="admin">
+		<put-attribute name="title" value="Add Financial Fee"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/feefin.jsp" />
+	</definition>
+	
+	<definition name="admin.fee.fin.per" extends="admin">
+		<put-attribute name="title" value="Financial On Velocity"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/feenonfinper.jsp" />
+	</definition>
+	
+	<definition name="admin.fee.nonfin" extends="admin">
+		<put-attribute name="title" value="Non Financial Services Fee"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/feenonfin.jsp" />
+	</definition>
+	
+	<definition name="admin.fees" extends="admin">
+		<put-attribute name="title" value="Fee Management"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/fees.jsp" />
+	</definition>
+	
+	<definition name="admin.editfee.fin" extends="admin">
+		<put-attribute name="title" value="Edit Fee"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/editfeefin.jsp" />
+	</definition>
+
+	<definition name="admin.editfee.nonfin" extends="admin">
+		<put-attribute name="title" value="Edit Fee"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/editfeenonfin.jsp" />
+	</definition>
+	
+	<definition name="admin.editfee.nonfinper" extends="admin">
+		<put-attribute name="title" value="Edit Fee"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/editfeenonfinper.jsp" />
+	</definition>
+	
+	<definition name="admin.viewfee.fin" extends="admin">
+		<put-attribute name="title" value="Fee View"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/viewfeefin.jsp" />
+	</definition>
+	
+	<definition name="admin.viewfee.nonfin" extends="admin">
+		<put-attribute name="title" value="Fee View"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/viewfeenonfin.jsp" />
+	</definition>
+
+	<definition name="admin.viewfee.nonfinper" extends="admin">
+		<put-attribute name="title" value="Fee View"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/viewfeenonfinper.jsp" />
+	</definition>
+	
+	<!-- for feemgmt -->
+	
+	<!-- added for view adminuser -->
+	<definition name="admin.viewuser" extends="admin">
+		<put-attribute name="title" value="Admin User View"/>
+		<put-attribute name="body" value="/pages/admin/viewadminuser.jsp" />
+	</definition>
+	<definition name="admin.sessionExpired" extends="wallet.def">
+		<put-attribute name="title" value="Admin SessionExpired"/>
+		<put-attribute name="body" value="/pages/admin/sessionExpired.jsp" />
+	</definition>
+	<definition name="invalidSession" extends="wallet.def">
+		<put-attribute name="title" value="InvalidSession"/>
+		<put-attribute name="body" value="/pages/sessionExpired.jsp" />
+	</definition>
+	<definition name="admin.logout" extends="wallet.def">
+		<put-attribute name="title" value="Tarang wallet Logout"/>
+		<put-attribute name="menubar" value="/pages/admin/loginmenubar.jsp" />
+		<put-attribute name="body" value="/pages/admin/logout.jsp" />
+	</definition>
+	<definition name="wallet.home" extends="wallet.def">
+		<put-attribute name="title" value="Tarang eWallet"/>
+		<put-attribute name="menubar" value="/pages/homemenubar.jsp" />
+		<put-attribute name="body" value="/pages/home.jsp" />
+	</definition>
+	<definition name="wallet.customer.forgotpassword" extends="wallet.def">
+		<put-attribute name="title" value="Forgot Password"/>
+		<put-attribute name="menubar" value="/pages/customer/loginmenubar.jsp" />
+		<put-attribute name="body" value="/pages/customer/forgetpassword.jsp" />
+	</definition>
+	<definition name="customer.sessionExpired" extends="wallet.def">
+		<put-attribute name="title" value="Customer SessionExpired"/>
+		<put-attribute name="body" value="/pages/customer/sessionExpired.jsp" />
+	</definition>
+	<definition name="merchant.sessionExpired" extends="wallet.def">
+		<put-attribute name="title" value="Merchant SessionExpired"/>
+		<put-attribute name="body" value="/pages/merchant/sessionExpired.jsp" />
+	</definition>
+	<definition name="admin.customer.mgmt.edit" extends="admin">
+		<put-attribute name="title" value="Customer Edit"/>
+		<put-attribute name="body" value="/pages/admin/customermanagement.jsp" />
+	</definition>
+		<definition name="admin.customer.mgmt.view" extends="admin">
+		<put-attribute name="title" value="Customer View"/>
+		<put-attribute name="body" value="/pages/admin/customerdetailsview.jsp" />
+	</definition>
+	<definition name="admin.customer.update.profile" extends="customer">
+		<put-attribute name="title" value="Customer Profile"/>
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/customer/profile.jsp" />
+	</definition>
+	<definition name="wallet.logout" extends="wallet.def">
+		<put-attribute name="title" value="Tarang wallet Logout"/>
+		<put-attribute name="menubar" value="/pages/loginmenubar.jsp" />
+		<put-attribute name="body" value="/pages/logout.jsp" />
+	</definition>
+	<definition name="wallet.merchant.forgotpassword" extends="wallet.def">
+		<put-attribute name="title" value="Forgot Password"/>
+		<put-attribute name="menubar" value="/pages/merchant/loginmenubar.jsp" />
+		<put-attribute name="body" value="/pages/merchant/forgetpassword.jsp" />
+	</definition>
+	<definition name="registration.success" extends="merchant">
+		<put-attribute name="title" value="Registration Success"/>
+		<put-attribute name="header" value="/pages/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/loginmenubar.jsp" />
+		<put-attribute name="body" value="/pages/successregistration.jsp" />
+	</definition>
+
+	<definition name="customer.changepassword" extends="customer">
+		<put-attribute name="title" value="Customer Change Password"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/ChangePassword.jsp" />
+	</definition>
+
+    <definition name="merchant.changepassword" extends="merchant">
+		<put-attribute name="title" value="Merchant Change Password"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/ChangePassword.jsp" />
+	</definition>
+	
+	<definition name="admin.changepassword" extends="merchant">
+		<put-attribute name="title" value="Admin Change Password"/>
+		<put-attribute name="header" value="/pages/admin/header.jsp" />
+		<put-attribute name="menubar" value="/pages/admin/menubar.jsp" />
+		<put-attribute name="body" value="/pages/ChangePassword.jsp" />
+	</definition>
+	
+	<definition name="admin.viewrole" extends="admin">
+		<put-attribute name="title" value="View Role"/>
+		<put-attribute name="body" value="/pages/admin/viewrole.jsp" />
+	</definition>
+
+	<definition name="admin.view.under.const" extends="admin">
+		<put-attribute name="title" value="Tarang eWallet"/>
+		<put-attribute name="body" value="/pages/admin/underconstructed.jsp" />
+	</definition>
+	
+	<definition name="customer.underconstruction" extends="customer">
+		<put-attribute name="title" value="Tarang eWallet"/>
+		<put-attribute name="body" value="/pages/admin/underconstructed.jsp" />
+	</definition>
+	
+	<definition name="merchant.underconstruction" extends="merchant">
+		<put-attribute name="title" value="Tarang eWallet"/>
+		<put-attribute name="body" value="/pages/admin/underconstructed.jsp" />
+	</definition>
+	
+	<definition name="wallet.login" extends="wallet.def">
+		<put-attribute name="title" value="Tarang eWallet"/>
+		<put-attribute name="menubar" value="/pages/loginmenubar.jsp" />
+		<put-attribute name="body" value="/pages/login.jsp" />
+	</definition>
+	
+		<definition name="login.changepassword" extends="wallet.def">
+		<put-attribute name="title" value="Change Password"/>
+		<put-attribute name="header" value="/pages/header.jsp" />
+		<put-attribute name="menubar" value="/pages/loginmenubar.jsp" />
+		<put-attribute name="body" value="/pages/ChangePassword.jsp" />
+	</definition>
+	
+	<!--  MANAGE ACCOUNTS DEFINITIONS  -->
+	<definition name="customer.manageaccounts.accounts" extends="customer">
+		<put-attribute name="title" value="Manage Accounts"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/accounts.jsp" />
+	</definition>
+	<definition name="customer.manageaccounts.addcard" extends="customer">
+		<put-attribute name="title" value="Manage Accounts For AddCard"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/addcardaccount.jsp" />
+	</definition>
+	<definition name="customer.manageaccounts.addbank" extends="customer">
+		<put-attribute name="title" value="Manage Accounts For AddBank"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/addbankaccount.jsp" />
+	</definition>
+	<definition name="customer.manageaccounts.editbank" extends="customer">
+		<put-attribute name="title" value="Manage Accounts For Edit Bank"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/editbankaccount.jsp" />
+	</definition>
+	<definition name="customer.manageaccounts.editcard" extends="customer">
+		<put-attribute name="title" value="Manage Accounts For Edit Card"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/editcardaccount.jsp" />
+	</definition>
+
+	<definition name="merchant.manageaccounts.accounts" extends="merchant">
+		<put-attribute name="title" value="Manage Accounts"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/accounts.jsp" />
+	</definition>
+	<definition name="merchant.manageaccounts.addcard" extends="merchant">
+		<put-attribute name="title" value="Manage Accounts For AddCard"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/addcardaccount.jsp" />
+	</definition>
+	<definition name="merchant.manageaccounts.addbank" extends="merchant">
+		<put-attribute name="title" value="Manage Accounts For AddBank"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/addbankaccount.jsp" />
+	</definition>
+	<definition name="merchant.manageaccounts.editbank" extends="merchant">
+		<put-attribute name="title" value="Manage Accounts For EditBank"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/editbankaccount.jsp" />
+	</definition>
+	<definition name="merchant.manageaccounts.editcard" extends="merchant">
+		<put-attribute name="title" value="Manage Accounts For Edit Card"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/editcardaccount.jsp" />
+	</definition>
+	
+	
+	<definition name="customer.feedback" extends="customer">
+		<put-attribute name="title" value="Customer Feedback"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/feedback/feedback.jsp" />
+	</definition>
+	
+	<definition name="merchant.feedback" extends="merchant">
+		<put-attribute name="title" value="Merchant Feedback"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/feedback/feedback.jsp" />
+		
+	</definition>
+	 <definition name="customer.preferences" extends="customer">
+		<put-attribute name="title" value="Customer Preferences"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/customer/preferences.jsp" />
+	</definition>
+	
+	<definition name="merchant.preferences" extends="merchant">
+		<put-attribute name="title" value="Merchant Preferences"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/merchant/preferences.jsp" />
+	</definition>
+	
+	<definition name="admin.preferences" extends="admin">
+		<put-attribute name="title" value="Admin Preferences"/>
+		<put-attribute name="body" value="/pages/admin/preferences.jsp" />
+	</definition>
+	
+	<definition name="customer.manageaccounts.not.verified.card" extends="customer">
+		<put-attribute name="title" value="Manage Accounts For Not Verified Card"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/notverified.jsp" />
+	</definition>
+	
+	<definition name="customer.manageaccounts.pending.card" extends="customer">
+		<put-attribute name="title" value="Manage Accounts For Pending Card"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/pending.jsp" />
+	</definition>
+	
+	<definition name="merchant.manageaccounts.not.verified.card" extends="merchant">
+		<put-attribute name="title" value="Manage Accounts For Not Verified Card"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/notverified.jsp" />
+	</definition>
+	
+	<definition name="merchant.manageaccounts.pending.card" extends="merchant">
+		<put-attribute name="title" value="Manage Accounts For Pending Card"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/manageaccounts/pending.jsp" />
+	</definition>
+	
+	
+	<!-- tax definitions -->
+	<definition name="addtax" extends="admin">
+		<put-attribute name="title" value="Add Tax"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/tax.jsp" />
+	</definition>
+	<definition name="edittax" extends="admin">
+		<put-attribute name="title" value="Edit Tax"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/edittax.jsp" />
+	</definition>
+	
+	<definition name="taxs" extends="admin">
+		<put-attribute name="title" value="Taxes List"/>
+		<put-attribute name="body" value="/pages/feetaxmgmt/taxs.jsp" />
+	</definition>
+	
+	<!-- Velocity & Threshold -->
+	<definition name="admin.velocitythreshold.grid" extends="admin">
+		<put-attribute name="title" value="Transaction Threshold"/>
+		<put-attribute name="body" value="/pages/velocitythreshold/list.jsp" />
+	</definition>
+	
+	<definition name="admin.velocitythreshold.add" extends="admin">
+		<put-attribute name="title" value="Transaction Threshold"/>
+		<put-attribute name="body" value="/pages/velocitythreshold/add.jsp" />
+	</definition>
+
+    <definition name="admin.velocitythreshold.edit" extends="admin">
+		<put-attribute name="title" value="Transaction Threshold"/>
+		<put-attribute name="body" value="/pages/velocitythreshold/edit.jsp" />
+	</definition>
+	
+	 <definition name="admin.velocitythreshold.view" extends="admin">
+		<put-attribute name="title" value="Transaction Threshold"/>
+		<put-attribute name="body" value="/pages/velocitythreshold/view.jsp" />
+	</definition>
+    
+    <!-- Wallet Threshold -->
+	<definition name="admin.walletthreshold.grid" extends="admin">
+		<put-attribute name="title" value="Wallet Threshold"/>
+		<put-attribute name="body" value="/pages/walletthreshold/list.jsp" />
+	</definition>
+		
+	<definition name="admin.walletthreshold.add" extends="admin">
+		<put-attribute name="title" value="Wallet Threshold"/>
+		<put-attribute name="body" value="/pages/walletthreshold/add.jsp" />
+	</definition>
+		
+	<definition name="admin.walletthreshold.edit" extends="admin">
+		<put-attribute name="title" value="Wallet Threshold"/>
+		<put-attribute name="body" value="/pages/walletthreshold/edit.jsp" />
+	</definition>
+	
+	 <definition name="admin.walletthreshold.view" extends="admin">
+		<put-attribute name="title" value="Wallet Threshold"/>
+		<put-attribute name="body" value="/pages/walletthreshold/view.jsp" />
+	</definition>
+		
+	<definition name="customer.reloadmoney" extends="customer">
+		<put-attribute name="title" value="Reload Money From Accounts"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/transaction/reloadmoneys.jsp" />
+	</definition>	
+	<definition name="merchant.reloadmoney" extends="merchant">
+		<put-attribute name="title" value="Reload Money From Accounts"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/transaction/reloadmoneys.jsp" />
+	</definition>
+	<definition name="customer.reloadmoney.request" extends="customer">
+		<put-attribute name="title" value="Reload Money From Accounts"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/transaction/reloadmoney.jsp" />
+	</definition>		
+	<definition name="merchant.reloadmoney.request" extends="merchant">
+		<put-attribute name="title" value="Reload Money From Accounts"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/transaction/reloadmoney.jsp" />
+	</definition>	
+		
+	<!--  SEND MONEY DEFINITIONS  -->
+	<definition name="customer.send.moneyto.single" extends="customer">
+		<put-attribute name="title" value="Transfer Money To Single"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/sendmoney/sendmoney.jsp" />
+	</definition>	
+	
+	<definition name="customer.send.moneyto.single.confirmation" extends="customer">
+		<put-attribute name="title" value="Transfer Money To Single"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/sendmoney/sendmoneyview.jsp" />
+	</definition>
+	<definition name="merchant.send.moneyto.single.confirmation" extends="merchant">
+		<put-attribute name="title" value="Transfer Money To Single"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/sendmoney/sendmoneyview.jsp" />
+	</definition>
+	
+	<definition name="merchant.send.moneyto.single" extends="merchant">
+		<put-attribute name="title" value="Transfer Money To Single"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/sendmoney/sendmoney.jsp" />
+	</definition>	
+	
+	<definition name="merchant.send.moneyto.multiple" extends="merchant">
+		<put-attribute name="title" value="Transfer Money To Multiple"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/sendmoney/sendmoneymultiple.jsp" />
+	</definition>	
+	
+	<definition name="merchant.send.moneyto.multiple.file.upload.view" extends="merchant">
+		<put-attribute name="title" value="Transfer Money To Multiple"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/sendmoney/sendmoneymultiplefileupload.jsp" />
+	</definition>
+	
+	<definition name="merchant.send.moneyto.multiple.file.upload.confirmation" extends="merchant">
+		<put-attribute name="title" value="Transfer Money To Multiple"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/sendmoney/sendmoneymultiplefileuploadconfirm.jsp" />
+	</definition>	
+	
+	<!--  SELF TRANSFER DEFINITIONS  -->
+	<definition name="customer.self.transfer" extends="customer">
+		<put-attribute name="title" value="Transfer Money To Single"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/sendmoney/selftransfer.jsp" />
+	</definition>
+	
+	<definition name="customer.self.transfer.confirm" extends="customer">
+		<put-attribute name="title" value="Transfer Money To Single"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/sendmoney/selftransferconfirm.jsp" />
+	</definition>	
+	
+	<definition name="merchant.self.transfer" extends="merchant">
+		<put-attribute name="title" value="Transfer Money To Single"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/sendmoney/selftransfer.jsp" />
+	</definition>
+	
+	<definition name="merchant.self.transfer.confirm" extends="merchant">
+		<put-attribute name="title" value="Transfer Money To Single"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/sendmoney/selftransferconfirm.jsp" />
+	</definition>
+
+	<!-- Transaction tiles -->
+	<definition name="customer.requestmoney.list" extends="customer">
+  		<put-attribute name="title" value="Customer Request Money"/>
+  		<put-attribute name="body" value="/pages/requestmoney/list.jsp" />
+ 	</definition>
+	<definition name="customer.requestmoney.create" extends="customer">
+  		<put-attribute name="title" value="Customer Request Money"/>
+  		<put-attribute name="body" value="/pages/requestmoney/create.jsp" />
+ 	</definition>
+	<definition name="customer.requestmoney.success" extends="customer">
+  		<put-attribute name="title" value="Customer Request Money Success"/>
+  		<put-attribute name="body" value="/pages/requestmoney/success.jsp" />
+ 	</definition>
+	
+	<definition name="customer.requestmoney.view" extends="customer">
+		<put-attribute name="title" value="Customer Request Money View"/>
+  		<put-attribute name="body" value="/pages/requestmoney/view.jsp" />
+ 	</definition>	
+	
+	<definition name="customer.requestmoney.accept" extends="customer">
+		<put-attribute name="title" value="Customer Request Money Accept"/>
+  		<put-attribute name="body" value="/pages/requestmoney/accept.jsp" />
+ 	</definition>	
+	
+	<definition name="customer.requestmoney.reject" extends="customer">
+		<put-attribute name="title" value="Customer Request Money Reject"/>
+  		<put-attribute name="body" value="/pages/requestmoney/reject.jsp" />
+ 	</definition>
+
+ 	<definition name="customer.receivemoney.view" extends="customer">
+  		<put-attribute name="title" value="Receive Money"/>
+  		<put-attribute name="body" value="/pages/transaction/receivemoneyview.jsp" />
+ 	</definition>
+
+ 	<definition name="merchant.receivemoney.view" extends="merchant">
+  		<put-attribute name="title" value="Receive Money"/>
+  		<put-attribute name="body" value="/pages/transaction/receivemoneyview.jsp" />
+ 	</definition>
+ 	
+	<!-- reports -->
+	<definition name="customer.reports" extends="customer">
+		<put-attribute name="title" value="Reports"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/reports/reports.jsp" />
+	</definition>
+	
+	<definition name="merchant.reports" extends="merchant">
+		<put-attribute name="title" value="Reports"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/reports/reports.jsp" />
+	</definition>
+	
+	<definition name="user.reports" extends="admin">
+		<put-attribute name="title" value="Reports"/>
+		<put-attribute name="header" value="/pages/admin/header.jsp" />
+		<put-attribute name="menubar" value="/pages/admin/menubar.jsp" />
+		<put-attribute name="body" value="/pages/reports/reports.jsp" />
+	</definition>
+	
+	<definition name="admin.dispute" extends="admin">
+		<put-attribute name="title" value="User Dispute"/>
+		<put-attribute name="body" value="/pages/dispute/admindisputelist.jsp" />
+	</definition>
+	
+	<definition name="admin.dispute.update" extends="admin">
+		<put-attribute name="title" value="User Dispute Update"/>
+		<put-attribute name="body" value="/pages/dispute/admindisputeupdate.jsp" />
+	</definition>
+	
+	<definition name="merchant.dispute" extends="merchant">
+		<put-attribute name="title" value="Merchant Dispute"/>
+		<put-attribute name="body" value="/pages/dispute/merchantdisputelist.jsp" />
+	</definition>
+	
+	<definition name="merchant.dispute.update" extends="merchant">
+		<put-attribute name="title" value="Merchant Dispute Update"/>
+		<put-attribute name="body" value="/pages/dispute/merchantdisputeupdate.jsp" />
+	</definition>
+	
+	<definition name="customer.dispute" extends="customer">
+		<put-attribute name="title" value="Customer Dispute"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/dispute/customerdisputelist.jsp" />
+	</definition>
+	
+	<definition name="customer.dispute.update" extends="customer">
+		<put-attribute name="title" value="Customer Dispute Update"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/dispute/customerdisputeupdate.jsp" />
+	</definition>
+	
+	<definition name="customer.dispute.transaction" extends="customer">
+		<put-attribute name="title" value="Customer Dispute List of Transaction"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/dispute/customerdisputetxnlist.jsp" />
+	</definition>
+	
+	<definition name="customer.raise.dispute" extends="customer">
+		<put-attribute name="title" value="Raise Dispute"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/dispute/customerraisedispute.jsp" />
+	</definition>
+	
+	<!-- accountclose -->
+	<definition name="customer.accountclose.createrequest" extends="customer">
+		<put-attribute name="title" value="Customer Account Closer Request"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/accountcloser/create.jsp" />
+	</definition>
+	
+	<definition name="merchant.accountclose.createrequest" extends="merchant">
+		<put-attribute name="title" value="Merchant Account Closer Request"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/accountcloser/create.jsp" />
+	</definition>
+	
+	<definition name="customer.accountclose.addmessage" extends="customer">
+		<put-attribute name="title" value="Customer Account Closer Request"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/accountcloser/addmessage.jsp" />
+	</definition>
+	
+	<definition name="merchant.accountclose.addmessage" extends="merchant">
+		<put-attribute name="title" value="Merchant Account Closer Request"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/accountcloser/addmessage.jsp" />
+	</definition>
+	
+	<definition name="customer.accountclose.requestlist" extends="customer">
+		<put-attribute name="title" value="Customer Account Closer Request"/>
+		<put-attribute name="header" value="/pages/customer/header.jsp" />
+		<put-attribute name="menubar" value="/pages/customer/menubar.jsp" />
+		<put-attribute name="body" value="/pages/accountcloser/viewmessages.jsp" />
+	</definition>
+	
+	<definition name="merchant.accountclose.requestlist" extends="merchant">
+		<put-attribute name="title" value="Merchant Account Closer Request"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/accountcloser/viewmessages.jsp" />
+	</definition>
+	
+	<definition name="admin.accountcloser.list" extends="admin">
+		<put-attribute name="title" value="Account Closer"/>
+		<put-attribute name="header" value="/pages/admin/header.jsp" />
+		<put-attribute name="menubar" value="/pages/admin/menubar.jsp" />
+		<put-attribute name="body" value="/pages/accountcloser/list.jsp" />
+	</definition>
+	
+	<definition name="admin.accountcloser.view" extends="admin">
+		<put-attribute name="title" value="Account Closer"/>
+		<put-attribute name="header" value="/pages/admin/header.jsp" />
+		<put-attribute name="menubar" value="/pages/admin/menubar.jsp" />
+		<put-attribute name="body" value="/pages/accountcloser/accountcloserview.jsp" />
+	</definition>
+	
+	<definition name="admin.accountcloser.update" extends="admin">
+		<put-attribute name="title" value="Account Closer"/>
+		<put-attribute name="header" value="/pages/admin/header.jsp" />
+		<put-attribute name="menubar" value="/pages/admin/menubar.jsp" />
+		<put-attribute name="body" value="/pages/accountcloser/accountcloserupdate.jsp" />
+	</definition>
+	
+	<definition name="payment.failure.response" extends="wallet.def">
+		<put-attribute name="title" value="Tarang eWallet Payments"/>
+		<put-attribute name="body" value="/pages/payment/failureresponce.jsp" />
+	</definition>
+
+	<definition name="payment.unexpected.res.onlinepayment" extends="wallet.def">
+		<put-attribute name="title" value="Tarang eWallet Payments"/>
+		<put-attribute name="body" value="/pages/payment/unexpectedurls.jsp" />
+	</definition>
+
+	<definition name="payment.success.response" extends="wallet.def">
+		<put-attribute name="title" value="Tarang eWallet Payments"/>
+		<put-attribute name="body" value="/pages/payment/successresponce.jsp" />
+	</definition>
+
+	<definition name="payment.login" extends="wallet.def">
+		<put-attribute name="title" value="Tarang eWallet"/>
+		<put-attribute name="menubar" value="/pages/loginmenubar.jsp" />
+		<put-attribute name="body" value="/pages/payment/login.jsp" />
+	</definition>
+	
+	<definition name="admin.reconciliation.grid" extends="admin">
+		<put-attribute name="title" value="Reconciliation List"/>
+		<put-attribute name="header" value="/pages/admin/header.jsp" />
+		<put-attribute name="menubar" value="/pages/admin/menubar.jsp" />
+		<put-attribute name="body" value="/pages/reconciliation/reconciliationgrid.jsp" />
+	</definition>
+	<definition name="admin.reconciliation.adjustment.page" extends="admin">
+		<put-attribute name="title" value="Reconciliation"/>
+		<put-attribute name="header" value="/pages/admin/header.jsp" />
+		<put-attribute name="menubar" value="/pages/admin/menubar.jsp" />
+		<put-attribute name="body" value="/pages/reconciliation/reconciliationconfirm.jsp" />
+	</definition>
+	
+	<definition name="login.onetime.ipaddrcode" extends="wallet.def">
+		<put-attribute name="title" value="Authenticate Code"/>
+		<put-attribute name="menubar" value="/pages/loginmenubar.jsp" />
+		<put-attribute name="body" value="/pages/logincode.jsp" />
+	</definition>
+	
+	<definition name="admin.setup.view" extends="admin">
+		<put-attribute name="title" value="Admin Setup"/>
+		<put-attribute name="body" value="/pages/admin/setup.jsp" />
+	</definition>
+	
+	<definition name="wallet.merchant.file.upload" extends="wallet.def">
+		<put-attribute name="title" value="Merchant File Upload"/>
+		<put-attribute name="header" value="/pages/merchant/header.jsp" />
+		<put-attribute name="menubar" value="/pages/merchant/menubar.jsp" />
+		<put-attribute name="body" value="/pages/merchant/fileupload.jsp" />
+	</definition>
+	
+	<definition name="admin.cust.mer.session.expired" extends="wallet.def">
+		<put-attribute name="title" value="Session Expired"/>
+		<put-attribute name="header" value="/pages/header.jsp" />
+		<put-attribute name="menubar" value="/pages/menubar.jsp" />
+		<put-attribute name="body" value="/pages/repsessionexpired.jsp" />
+		<put-attribute name="footer" value="/pages/footer.jsp" />
+	</definition>
+	
+	<!-- Scheduler definitions -->
+	<definition name="customer.scheduler.list" extends="customer">
+		<put-attribute name="title" value="Recurring Summary"/>
+		<put-attribute name="body" value="/pages/scheduler/list.jsp" />
+	</definition>
+	<definition name="customer.scheduler.edit" extends="customer">
+		<put-attribute name="title" value="Edit Recurring"/>
+		<put-attribute name="body" value="/pages/scheduler/edit.jsp" />
+	</definition>
+	<definition name="customer.scheduler.view" extends="customer">
+		<put-attribute name="title" value="Recurring Details"/>
+		<put-attribute name="body" value="/pages/scheduler/view.jsp" />
+	</definition>
+	
+	<definition name="merchant.scheduler.list" extends="merchant">
+		<put-attribute name="title" value="Recurring Summary"/>
+		<put-attribute name="body" value="/pages/scheduler/list.jsp" />
+	</definition>
+	<definition name="merchant.scheduler.edit" extends="merchant">
+		<put-attribute name="title" value="Edit Recurring"/>
+		<put-attribute name="body" value="/pages/scheduler/edit.jsp" />
+	</definition>
+	<definition name="merchant.scheduler.view" extends="merchant">
+		<put-attribute name="title" value="Recurring Details"/>
+		<put-attribute name="body" value="/pages/scheduler/view.jsp" />
+	</definition>
+	
+	<definition name="rest.default.view" extends="wallet.def">
+  		<put-attribute name="title" value="Rest Web Services Test"/>
+  		<put-attribute name="body" value="/pages/rest/restview.jsp" />
+ 	</definition>
+</tiles-definitions> 

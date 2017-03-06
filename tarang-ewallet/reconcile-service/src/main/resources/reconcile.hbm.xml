@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tarang.ewallet.model">
+
+	<class name="Reconcile" table="Reconcile" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="pgTxnId" not-null="true" type="long" unique="true"/>
+		<property name="actualAmount" type="double" />
+		<property name="scheme" type="string" />
+		<property name="purchaseDate" type="string" />
+		<property name="purchaseTime" type="string" />
+		<property name="txnAmount" type="double" />
+		<property name="finalAmount" type="double" />
+		<property name="txnCurrency" type="string" />
+		<property name="status" type="long" />
+		<property name="creationDate" type="java.util.Date" />
+		<property name="updateDate" type="java.util.Date" />
+	</class> 
+	<query name="getReconcileRecords" >
+		<![CDATA[from Reconcile as re where re.status = ? and re.creationDate between ? and ?]]>
+	</query>
+	<query name="getReconcileRecordById" >
+		<![CDATA[from Reconcile as re where re.id=?]]>
+	</query>
+</hibernate-mapping>

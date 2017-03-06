@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="wallet-ui">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+        <dependent-module archiveName="util-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/util-service/util-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="fraudcheck-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/fraudcheck-service/fraudcheck-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="usermgmt-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/usermgmt-service/usermgmt-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="masterdata-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/masterdata-service/masterdata-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="accountmgmt-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/accountmgmt-service/accountmgmt-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="crypt-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/crypt-service/crypt-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="common-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/common-service/common-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="http-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/http-service/http-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="email-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/email-service/email-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="customer-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/customer-service/customer-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="merchant-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/merchant-service/merchant-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="audittrail-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/audittrail-service/audittrail-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="feemgmt-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/feemgmt-service/feemgmt-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="transaction-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/transaction-service/transaction-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="reports-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/reports-service/reports-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="accountcloser-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/accountcloser-service/accountcloser-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dispute-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dispute-service/dispute-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="reconcile-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/reconcile-service/reconcile-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="scheduler-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/scheduler-service/scheduler-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="prepaidcardmgmt-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/prepaidcardmgmt-service/prepaidcardmgmt-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sms-service-5.8.8.RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sms-service/sms-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/wallet-ui/target/classes"/>
+        <property name="component.exclusion.patterns" value="WEB-INF/lib/servlet-*.jar,WEB-INF/lib/jsp-*.jar,WEB-INF/lib/spring-2.0.jar"/>
+        <property name="context-root" value="wallet-ui"/>
+    </wb-module>
+</project-modules>

@@ -1,0 +1,689 @@
+.form {
+	filter : progid:DXImageTransform.Microsoft.gradient(startColorstr='#CCCCCC', endColorstr='#EEEEEE');
+	background: -webkit-gradient(linear, left top, left bottom, from(#2785f0), to(#EEEEEE));
+	background: -moz-linear-gradient(top, #2785f0, #EEEEEE);
+	background: -o-linear-gradient(top, #a2c6f5, #EEEEEE);
+	margin: auto;
+	line-height: 15px;
+	font-weight: bold;
+	color: #000000;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	border: 1px solid #999;
+	border: inset 1px solid #333;
+	-webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
+	text-align: left;
+}
+
+.pageheading{
+	align:center;
+	padding-top: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+}
+
+.cus_mer_dashboard_heading {
+	align:left;
+	padding-top: 20px;
+	font-size: 17px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.cus_mer_welcome_heading {
+	color: #fff;
+}
+
+.cus_mer_Null_welcome_heading {
+	color: #ff5a00;
+}
+
+.cus_mer_status_heading {
+	color: red;
+}
+
+.cus_mer_row2_col1 {
+	height: 180px;
+	width:550px;
+	align:center;
+}
+
+.cus_mer_row2_col2 {
+	height: 196px;
+	width:400px;
+}
+
+.cus_mer_row2_col2_content{
+	padding-left: 30px;
+	float:left;
+}
+
+.subheading{
+	align:left;
+	padding-top: 10px;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	color: black;
+}
+
+.formlebel {
+	text-align: left;
+	font-family: Arial, Verdana;
+	font-size: 12px;
+	font-style: bold;
+	line-height: 24px;
+	font-weight: bold;
+	color: #000000;
+	
+}
+
+.formdata {
+	text-align: right;
+	font-family: Arial, Verdana;
+	font-size: 12px;
+	font-style: bold;
+	line-height: 24px;
+	font-weight: bold;
+	color: #000000;
+}
+.formdataleft{
+	text-align: left;
+	font-family: Arial, Verdana;
+	font-size: 12px;
+	font-style: bold;
+	line-height: 24px;
+	font-weight: bold;
+	color: #000000;
+}
+.formlink{
+	font-family: Arial, Verdana;
+	font-size: 14px;
+	font-style: bold;
+	line-height: 24px;
+	font-weight: bold;
+	color: rgb(24,12,218);
+}
+
+.formlink1{
+	font-family: Arial, Verdana;
+	font-size: 14px;
+	font-style: bold;
+	line-height: 24px;
+	font-weight: bold;
+	color: rgb(255,255,255);
+}
+
+ .forminput {
+	width: 250px;
+	padding-left: 3px;
+    font-family:"Arial";
+    font-size: 12px;
+    padding: 2px 2px 2px !important;
+ 	border-radius: 7px;
+    border:solid 1px white;
+    padding:5px;
+} 
+
+.phoneinput {
+	width: 178px;
+	padding-left: 3px;
+    font-family:"Arial";
+    font-size: 12px;
+    border-radius: 7px;
+    border:solid 1px white;
+    padding:5px;
+   	padding: 2px 2px 2px !important;
+}
+
+.phonecodeinput {
+	width: 55px;
+	padding-left: 3px;
+    font-family:"Arial";
+    font-size: 12px;
+    border-radius: 7px;
+    border:solid 1px white;
+    padding:5px;
+    padding: 2px 2px 2px !important;
+   
+}
+
+.forminputcvv {
+	width: 199px;
+	padding-left: 3px;
+    font-family:"Arial";
+    font-size: 12px;
+    border-radius: 7px;
+    border:solid 1px white;
+    padding:5px;
+}
+
+.searchinputhor {
+	width: 120px;
+	padding-left: 2px;
+    font-family:"Arial";
+    font-size: 12px;
+    border-radius: 7px;
+    border:solid 1px white;
+    padding:5px;
+    padding: 2px 2px 2px !important;
+}
+
+.searchinputver {
+	width: 163px;
+	padding-left: 3px;
+    font-family:"Arial";
+    font-size: 12px;
+    border-radius: 7px;
+    border:solid 1px white;
+    padding:5px;
+    padding: 2px 2px 2px !important;
+}
+
+.admingraph{
+	min-width: 370px; 
+	height: 250px;
+}
+	
+.dashboard_links_div{
+	float:left;
+}
+	
+.dashboardtrecentactivitydiv{
+	float:left; 
+	margin-left: 12px;
+}
+
+.notificationsbox {
+	filter : progid:DXImageTransform.Microsoft.gradient(startColorstr='#CCCCCC', endColorstr='#EEEEEE');
+	background: -webkit-gradient(linear, left top, left bottom, from(#2785f0), to(#EEEEEE));
+	background: -moz-linear-gradient(top, #2785f0, #EEEEEE);
+	margin: auto;
+	text-align: left;
+	font-family: Arial, Verdana;
+	font-size: 12px;
+	font-style: bold;
+	line-height: 10px;
+	color: #000000;
+	text-decoration: none;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	padding-left: 0px;
+	border: 1px solid #999;
+	border: inset 1px solid #333;
+	-webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3);
+	padding-bottom: 5px;
+   
+}
+.notificationbox_header{
+	background-color: #c4e1f9;
+	height: 40px;
+}
+
+.notificationbox_body{
+	padding-left:30px;
+	font-weight: bold;
+}
+
+.formsubheading {
+	background-color: #b0c4de;
+	height: 10px;
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	text-align: centre;
+	width: 100%;
+}
+
+.formlist {
+	width: 255px;
+	padding-left: 3px;
+    font-family:"Arial";
+    font-size: 12px;
+    border-radius: 7px;
+    border:solid 1px white;
+    padding:5px;
+    padding: 2px 2px 2px !important;
+}
+
+.formbtns {
+	display:inline-block;
+	width: auto;
+}
+
+.errorsnote {
+ 	color: #008000;
+	font-style: italic;
+}
+
+.mfield {
+	color: #ff0000;
+	font-style: italic;
+}
+
+.termandcondition {
+	color: #110f0f;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.pmenu{
+	text-align: left;
+	padding-left: 10px; 
+	text-display:block;
+}
+
+.successmsg {
+	color: #A5FF6E;
+	font-style: italic;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.errormsg {
+	color: #F97B95E6;
+	font-style: italic;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.searcherror {
+ 	color: #ff0000;
+ 	font-weight: bold;
+}
+
+.popuperror {
+	color: #FF0000;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.error {
+ 	color: #ff0000;
+ 	font-weight: bold;
+ 	font-style: italic;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+}
+.success {
+ 	color: #A5FF6E;
+ 	font-weight: bold;
+}
+
+#datepicker {
+	border: 1px solid #7cafd6;
+	background:url('../img/cal.gif') no-repeat right center;
+	background-color:#ffffff;
+	padding: 2px 2px 2px !important;
+	width: 248px;
+	border-radius: 7px;
+    border:solid 1px white;
+    padding:5px;
+    font-size: 12px;
+	
+}
+
+
+/** need to verify*/
+
+
+.block {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+.clear {
+	clear: both;
+}
+
+}
+.formtr {
+	width:100px;
+}
+
+.formerror {
+	/* width:100px; */
+}
+
+.smallformlist{
+	width: 100px;
+	font-family:"Arial";
+	font-size: 12px;
+}
+
+
+/* commons
+----------------------------------------------- */
+.floatleft{float:left;}
+.floatright{float:right;}
+.inline-ul li{display:inline; color:#0c0c0c;}
+
+/* boxes
+----------------------------------------------- */
+.box h2 {
+	font-size:1.2em;
+	font-weight:bold;
+	color:#1B548D;
+	background:#E6F0F3;
+	margin:-10px -10px 0 -10px;
+	padding:10px 12px;
+	border-bottom:1px solid #B3CBD6;
+	
+	 -moz-border-radius: 5px 5px 0px 0px; /* Firefox */
+	  -webkit-border-radius: 5px 5px 0px 0px; /* Safari, Chrome */
+	  border-radius: 5px 5px 0px 0px; /* CSS3 */
+}
+
+/* table buttons
+----------------------------------------------- */
+.styled-button {
+	-webkit-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	-moz-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	background-color:#FFFFFF;
+	border-radius:5px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border:1px solid #999;
+	color: #FFFFFF;
+	font-family:Arial, Verdana;
+	font-size:11px;
+	font-weight:700;
+	padding:2px 6px;
+	height:28px;
+	background-color: #066ECD; 
+	border-color: #0561B4;
+	cursor:pointer;
+	cursor:hover;	
+	
+}
+/*disable only for button*/
+.styled-button[disabled]{
+	background-color: grey; 
+	border-color: #0561B4;
+	color:#000000; 
+}
+
+.styled-button:hover{
+	background-color: #6699FF; 
+	border-color: #0561B4;
+	color:#000000;
+	cursor:hand;
+}
+
+.styled-button:visited{
+	background-color: #ffffff; 
+	border-color: #0561B4;
+	color:#000000;
+}
+.formtdbtn{
+	padding-right: 30px;
+	/* background-color: #6699FF */
+}
+/*for other disabled input*/
+[disabled]{
+	/* background-color: threedshadow;  */
+	background-color: #9DC9EF;
+	border-color: #0561B4;
+	color:#000000;
+}
+
+[readOnly]{
+	background-color: #9DC9EF; 
+	border-color: #0561B4;
+	color:#000000;
+}
+
+
+.rolemenus{
+	text-align: left;
+	padding-left: 90px;
+}
+
+.messagescroll{
+	width:400px;
+	height:50px;
+	overflow:auto;
+}
+
+ /* css code for passwordpopup  
+======================================
+ */
+.help-icon {
+  position: relative; 
+  height: 16px;
+  border: none;
+  top: 3px;
+ }
+
+.help-icon-content { 
+	position: absolute;
+	background-color: lightblue;
+	padding: 5px;
+	border: 1px dashed gray;
+	visibility: hidden;
+	color: black;
+	font-size: 10px;
+	z-index: 50;
+}
+ 
+.popup{
+  position: relative; 
+  top: 6px;
+  border: none;
+ }
+ 
+.thumbnail:hover{
+	background-color: transparent;
+	z-index: 50;
+}
+
+.thumbnail span{ /*CSS for enlarged image*/
+	position: absolute;
+	background-color: lightblue;
+	padding: 5px;
+	border: 1px dashed gray;
+	visibility: hidden;
+	color: black;
+	text-decoration: none;
+	font-size: 10px;
+}
+
+.thumbnail span img{ /*CSS for enlarged image*/
+	border-width: 0;
+	padding: 2px;
+}
+
+.thumbnail:hover span{ /*CSS for enlarged image on hover*/
+visibility: visible;
+}
+.thumbnail{
+	outline: none;
+}
+
+.dashboardahref{
+	float:right;
+	margin-right: 1px;
+}
+
+/* css code for admin headerpart
+======================================
+ */
+.adminheader{
+   font-size: 15px;
+   color: 006400; 
+   text-decoration: none;
+}
+.small{font-size:14px; font-family: fantasy;}
+.inline-ul li a{display:inline; color:#fff;font-size:15px;}
+	
+	/* css code for sessionexpiredpage
+======================================
+ */
+.sessionfont{
+	font-weight: bold;
+}
+	
+	/* css code for customer headerpart
+======================================
+ */
+ .customerheader{
+	 font-size: 15px;
+	 color: 006400; 
+	 text-decoration: none;
+}
+ 
+.inline-ul li a{display:inline; color:#fff;font-size:15px;}
+
+/* css code for customermenubar
+======================================
+ */
+ .menucolor{
+ color:#8b7d7b
+}
+ /* css code for slabspopup
+======================================
+ */
+ .slabpopup{
+  border:none;
+  position:  relative;
+  top: 6px;
+}
+   
+	/* css code for merchant headerpart
+======================================
+ */
+.inline-ul li a{display:inline; color:#0b0a0a;font-size:15px;}
+
+.merchantheader{
+  font-size: 15px;
+  color: 006400;
+  text-decoration: none;
+}
+
+.reportpdfimg{
+    align:center;
+}
+.fileupload{
+   font-weight: bold;
+   text-align: center;
+}
+
+.fileuploadcnfm{
+  font-size: 15px;
+  text-align: center;
+}
+
+.fileuploadcnfmheading {
+	width: 20%;
+	font-family:"Arial";
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.fileuploadcnfminput {
+	width: 20%;
+	font-family:"Arial";
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+/* css code for terms&conditions
+======================================
+ */
+.divmargin{
+  margin-top:30px;
+}
+.copyright{
+  text-align:center;
+  color:grey;
+  font-size:10;
+}
+ 
+ /* css code for cvvpopup
+======================================
+ */
+.walletlogoborder{
+  border: none;
+}
+.h2color{
+   color: #c88039;
+}
+.rolemenutreeitem{
+	size: 3;
+	color: blue;
+}
+.imgpostion{
+   border: none;
+   position:relative; 
+   top: 6px;
+}
+
+ /* css code for dispute messagelist
+======================================
+ */
+.fromlabel{
+  padding-left: 30px;
+  width: 15%; 
+  text-align: left;
+}
+
+.messagelabel{
+  padding-left: 50px;
+  width: 60%;
+   text-align: left;
+ }
+ 
+.creatorlabel{
+ padding-left: 1%; 
+ width: 15%;
+ }
+ 
+.messageslabel{
+  padding-left: 3%;
+   width: 80%;
+ }
+ 
+ /* css code for accountcloser messagelist
+======================================
+ */
+.creatorlabel{
+  padding-left: 2%; 
+  width: 23%;
+  text-align: center;
+ }
+ 
+ .cvvhelpfont{
+	size: 3;
+	color: blue;
+}
+
+.centerstyle{
+	text-align: center;
+
+}
+
+.tablefixed, 
+.linebreak{
+	table-layout:fixed;
+  word-wrap:break-word;
+  white-space: -o-pre-wrap;
+
+}
+ 

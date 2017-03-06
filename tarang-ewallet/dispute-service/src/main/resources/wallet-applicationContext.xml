@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<bean name="disputeDao" class="com.tarang.ewallet.dispute.dao.impl.DisputeDaoImpl" lazy-init="true">
+		<constructor-arg ref="hibernateTemplate" />
+	</bean>
+	<bean name="disputeRepository" class="com.tarang.ewallet.dispute.repository.impl.DisputeRepositoryImpl" lazy-init="true">
+		<constructor-arg ref="disputeDao" />
+		<constructor-arg ref="transactionWalletService" />
+		<constructor-arg ref="emailTemplateService" />
+		<constructor-arg ref="emailService" />
+	</bean>
+	<bean name="disputeService" class="com.tarang.ewallet.dispute.business.impl.DisputeServiceImpl" lazy-init="true">
+		<constructor-arg ref="disputeRepository" />
+	</bean>
+  	
+</beans>

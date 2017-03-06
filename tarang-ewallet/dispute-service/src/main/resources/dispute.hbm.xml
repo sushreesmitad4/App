@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tarang.ewallet.model">
+		
+	<class name="Dispute" table="Dispute">
+		<id name="id" type="long" column="id">
+			<generator class="native"/>
+		</id>
+		<property name="transactionId" not-null="true" type="long"/>
+		<property name="status" not-null="true" type="long"/>		
+		<property name="type" not-null="true" type="long"/>
+		<property name="creationDate" not-null="true" type="java.util.Date"/>
+		<property name="updationDate" not-null="true" type="java.util.Date"/>
+		<property name="requestAmount" not-null="true" type="double"/>
+		<property name="requestCurrency"  not-null="true" type="long"/>
+		<property name="approvedAmount" not-null="true" type="double"/>
+		<property name="approvedCurrency"  type="long"/>	
+		<set name="messages" inverse="true" cascade="all" lazy="false" >
+		   <key><column name="dispute" not-null="true" /></key>
+		   <one-to-many class="DisputeMessage"></one-to-many>
+		</set>	
+	</class>
+	
+	<class name="DisputeMessage" table="DisputeMessage">
+		<id name="id" type="long" column="id">
+			<generator class="native"/>
+		</id>
+		<many-to-one name="dispute" column="dispute" not-null="true"/>
+		<property name="message" not-null="true" type="string" length="1000"/>
+		<property name="creationDate" not-null="true" type="java.util.Date"/>
+		<property name="creator" not-null="true" type="long"/>						
+	</class>
+	
+	<query name="getDisputeById">
+		<![CDATA[from Dispute as dispute where dispute.id=?]]>
+	</query>
+	<query name="getMerchantToPayStatusDisputeIds">
+		<![CDATA[select dispute.id from Dispute as dispute where dispute.status=? and dispute.updationDate < ?]]>
+	</query>
+	<query name="isDisputeExistForTxnId">
+		<![CDATA[from Dispute as dispute where dispute.transactionId=?]]>
+	</query>
+</hibernate-mapping>

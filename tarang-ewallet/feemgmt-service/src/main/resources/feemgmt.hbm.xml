@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.tarang.ewallet.model" >
+
+	<class name="Fee" table="Fee" lazy="false" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="userType" not-null="true" length="50" type="long" />
+		<property name="services" not-null="true" length="50" type="long" />
+		<property name="payingentity" not-null="false" length="50" type="long" />
+		<property name="feeType" not-null="true" length="50" type="long" />
+		<property name="fixCharSen" not-null="false" type="double" />
+		<property name="percentageSen" not-null="false" type="double" />
+		<property name="fixCharRec" not-null="false" type="double" />
+		<property name="percentageRec" not-null="false" type="double"  />
+		<properties name="unique_fee" unique="true" >
+			<property name="operationType" not-null="true" length="50" type="long" />
+			<property name="country" not-null="true" length="50" type="long" />
+			<property name="currency" not-null="true" length="50" type="long" />
+		</properties>
+		<property name="timefreequency" length="50" type="long" />
+		<list name="feeSlabs" lazy="false" cascade="all" >
+            <key column="fee" />
+            <index column="idx" />
+            <one-to-many class="FeeSlab" />
+        </list>
+	</class>
+		
+	<class name="FeeSlab" table="FeeSlab" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="lowerLimit" not-null="false" type="double" />
+		<property name="upperLimit" not-null="false" type="double" />
+		<property name="fixedChargeSender" not-null="false" type="double" />
+		<property name="percentageOfSender" not-null="false" type="double" />
+		<property name="fixedChargeReceiver" not-null="false" type="double" />
+		<property name="percentageOfReceiver" not-null="false" type="double" />
+		<many-to-one name="fee" column="fee" insert="false" update="false" />
+	</class>
+	
+	<class name="Tax" table="Tax" lazy="false" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="country" not-null="true" unique="true" type="long" />
+		<property name="percentage" type="double" />
+	</class>
+
+	<query name="getFeeListOnServiceType" >
+		<![CDATA[select new com.tarang.ewallet.dto.FeeDto(f.id, f.userType, f.services, f.operationType, f.country, f.currency,  f.payingentity, f.feeType, f.fixCharSen, f.percentageSen, f.fixCharRec, f.percentageRec) from Fee f where f.services=?]]>
+	</query>
+
+	<query name="getFeeMgmtOnId" >
+		<![CDATA[from Fee fm  where fm.id=?]]>
+	</query>
+	
+	<query name="getFeeObjectOnServiceSearch" >
+		<![CDATA[from Fee f where f.operationType=? and f.country=? and f.currency=? ]]>
+	</query>
+	
+	<query name="getTaxById" >
+		<![CDATA[from Tax tax  where tax.id=?]]>
+	</query>
+	
+	<query name="getTaxs" >
+		<![CDATA[from Tax]]>
+	</query>
+	
+		<query name="getTaxByCountryId" >
+		<![CDATA[from Tax tax  where tax.country=?]]>
+	</query>
+	
+
+</hibernate-mapping>

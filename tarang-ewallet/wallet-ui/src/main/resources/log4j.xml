@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="WALLETWEB" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.base}/logs/wallet.log" />
+        <param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="com.tarang.mwallet.rest.services.util.MpinPatternLayout">
+			<param name="ConversionPattern" value="%d - %5p - %C - %M - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="com.tarang.mwallet.rest.services.util.MpinPatternLayout">
+			<param name="ConversionPattern" value="%d - %5p - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- Start of Log JDBC bind parameter runtime arguments  --> 
+	<category name="org.hibernate.type">
+		<priority value="off" /> <!-- change to off  -->
+	</category>
+	
+	<logger name="org.hibernate.type">
+		<level value="off" /> <!-- change to off -->
+		<appender-ref ref="WALLETWEB" />
+	</logger>
+
+	<logger name="org.hibernate.SQL">
+		<level value="off" /> <!-- change to off  -->
+		<appender-ref ref="WALLETWEB" />
+	</logger>
+	<!-- End of Log JDBC bind parameter runtime arguments  --> 
+	
+	<root>
+	 	  <level value="INFO"/>	
+	 	  <appender-ref ref="WALLETWEB"/>
+	 	  <appender-ref ref="STDOUT"/>
+	 </root>
+	
+</log4j:configuration>

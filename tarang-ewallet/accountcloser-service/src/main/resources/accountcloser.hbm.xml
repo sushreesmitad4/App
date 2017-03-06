@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tarang.ewallet.model">
+
+	<class name="AccountCloser" table="AccountCloser" lazy="false" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="authId" not-null="true" type="long" />
+		<property name="status" not-null="true" type="long" />
+		<property name="userType" not-null="true" type="string" />
+		<property name="requestedDate" not-null="true" type="java.util.Date" />
+        <set name="messages" inverse="true" cascade="all" lazy="false">
+		   <key><column name="accountCloser" not-null="true" /></key>
+		   <one-to-many class="AccountCloserMessage"></one-to-many>
+		</set>
+	</class>
+		
+	<class name="AccountCloserMessage" table="AccountCloserMessage" lazy="false" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="message" not-null="true" type="string" length="1000"/>
+		<property name="messageDate" not-null="true" type="java.util.Date" />
+		<property name="creator" not-null="true" type="long" />
+		<many-to-one name="accountCloser" column="accountCloser" />
+	</class>
+	
+	<query name="getAccountCloserByAuthId">
+		<![CDATA[from AccountCloser as accountCloser where accountCloser.authId=?]]>
+	</query>
+	
+	<query name="getAccountCloserById">
+		<![CDATA[from AccountCloser as accountCloser where accountCloser.id=?]]>
+	</query>
+	
+	<query name="getApprovalAccountClosers">
+		<![CDATA[select accountCloser.id from AccountCloser as accountCloser where accountCloser.status=? and accountCloser.requestedDate < ?]]>
+	</query>
+
+</hibernate-mapping>

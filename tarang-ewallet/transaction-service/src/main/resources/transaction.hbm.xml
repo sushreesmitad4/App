@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.tarang.ewallet.model" >
+		
+	<class name="History" table="History" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="txnType" not-null="true" type="string" />
+		<property name="reqType" not-null="true" type="string" />
+		<property name="authMode" type="string" />
+		<property name="tranceNumber" type="string" />
+		<property name="isSuccess"  not-null="true" type="boolean" />
+		<property name="dateAndTime" not-null="true" type="java.util.Date" />
+		<property name="orderId" not-null="true" type="string" />
+		<property name="accountId" not-null="true" type="long" />
+		<property name="cardNumber" type="string" />
+		<property name="code" type="string" />
+		<property name="msg" type="string" />
+		<property name="amount"  not-null="true" type="double" />
+		<property name="currency"  not-null="true" type="string" />
+		<property name="numberOfAttempts"  not-null="true" type="long" />
+		<property name="nameOnCard" type="string" />
+		<property name="errorCode"  type="string" />
+		<property name="errorMsg"  type="string" />
+		<property name="userAgent" type="string" />
+		<property name="sourceIp" type="string" />
+		<property name="reconcileDate" type="java.util.Date" />
+		<property name="reconciledStatus" type="boolean" />
+		<many-to-one name="authTxn" column="authHistoryId" unique="true" class="AuthTxn" lazy="false" cascade="all" />
+		<many-to-one name="settlementTxn" column="settlementHistoryId" unique="true" class="SettlementTxn" lazy="false" cascade="all" />
+		<many-to-one name="refundTxn" column="refundHistoryId" unique="true" class="RefundTxn" lazy="false" cascade="all" />
+		<many-to-one name="cancelTxn" column="cancelHistoryId" unique="true" class="CancelTxn" lazy="false" cascade="all" />
+		
+	</class>
+	
+	<class name="AuthTxn" table="AuthTxn" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="txnType" not-null="true" type="string" />
+		<property name="paymentMode"  not-null="true" type="string" />
+		<property name="checkSum" type="string" />
+		<property name="pgTxnId" not-null="true" type="string" />
+		<property name="responseDecision" not-null="true" type="string" />
+		<property name="authorizationCode"  type="string" />
+		<property name="traceNo"  type="string" />
+		<property name="respnseText"  type="string" />
+		<property name="cvvResponseCode" type="string" />
+		<property name="avsResponseCode" type="string" />
+	</class>
+
+	<class name="SettlementTxn" table="SettlementTxn" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="merchantID" type="string" />
+		<property name="orderId"  not-null="true" type="string" />
+		<property name="pgTxnId" not-null="true" type="string" />
+		<property name="settlementTxnId" not-null="true" type="string" />
+		<property name="txnAmount" not-null="true" type="double" />
+		<property name="settledAmount" not-null="true" type="double" />
+		<property name="txnDate" type="string" />
+		<property name="settlementOrderNo" type="string" />
+		<property name="txnCurrency" type="string" />
+		<property name="merchantOrderNo" type="string" />
+		<property name="responseCode" type="string" />
+		<property name="responseMessage" not-null="true" type="string" />
+		<property name="responseDecision" not-null="true" type="string" />
+	</class>
+	
+	<class name="RefundTxn" table="RefundTxn" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="merchantID" type="string" />
+		<property name="pgTxnId" not-null="true" type="string" />
+		<property name="txnAmount" not-null="true" type="double" />
+		<property name="refundAmount" not-null="true" type="double" />
+		<property name="responseCode" type="string" />
+		<property name="responseMessage" not-null="true" type="string" />
+		<property name="responseDecision" not-null="true" type="string" />
+	</class>
+
+	<class name="CancelTxn" table="CancelTxn" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="merchantID" type="string" />
+		<property name="pgTxnId" not-null="true" type="string" />
+		<property name="txnAmount" not-null="true" type="double" />
+		<property name="responseCode" type="string" />
+		<property name="responseMessage" not-null="true" type="string" />
+		<property name="responseDecision" not-null="true" type="string" />
+	</class>
+	
+	<class name="WalletTransaction" table="WalletTransaction" >
+		<id name="id" type="long" column="id" >
+			<!-- <generator class="native" /> -->
+			<generator class="sequence">
+        		<param name="sequence">WALLET_TRANSACTION_SEQUENCE</param>
+    		</generator>
+		</id>
+		<!-- ipAddress for web transaction -->
+		<property name="ipAddress" type="string" />
+		<!-- simNumber & imeiNumber for mobile transaction -->
+		<property name="simNumber" type="string" length="50"/>
+		<property name="imeiNumber" type="string" length="50"/>
+		<property name="payee" type="long" />
+		<property name="payer" type="long" />
+		<property name="creationDate" not-null="true" type="java.util.Date" />
+		<property name="updatededDate" type="java.util.Date" />
+		<property name="payerAmount" type="double" />
+		<property name="payerCurrency" type="long" />
+		<property name="payeeAmount" type="double" />
+		<property name="payeeCurrency" type="long" />
+		<property name="status" not-null="true" type="long" />
+		<property name="typeOfTransaction" not-null="true" type="long" />
+		<property name="convertionRate" not-null="true" type="double" />
+		<property name="parentId" type="long" />
+		<property name="payeeFee" type="double" />
+		<property name="payeeTax" type="double" />
+		<property name="payerFee" type="double" />
+		<property name="payerTax" type="double" />
+		<property name="payeeBalance" type="double" />
+		<property name="payerBalance" type="double" />
+		<property name="reversalType" type="long" />
+		<property name="typeOfRequest" not-null="true" type="long" length="10"/>
+		
+	</class>
+	
+	<class name="WalletFee" table="WalletFee" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="transactionId" not-null="true" type="long" />
+		<property name="amount" type="double" />
+		<property name="country" not-null="true" type="long" />
+		<property name="currency" not-null="true" type="long" />
+		<property name="type" not-null="true" type="long" />
+		<property name="payDate" not-null="true" type="java.util.Date" />
+		<property name="parentId" type="long" />
+		<property name="reversal" not-null="true" type="boolean" />
+	</class>
+
+	<class name="WalletTax" table="WalletTax" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="transactionId" not-null="true" type="long" />
+		<property name="amount" type="double" />
+		<property name="country" not-null="true" type="long" />
+		<property name="currency" not-null="true" type="long" />
+		<property name="type" not-null="true" type="long" />
+		<property name="payDate" not-null="true" type="java.util.Date" />
+		<property name="parentId" type="long" />
+		<property name="reversal" not-null="true" type="boolean" />
+	</class>
+	
+	<class name="RequestMoney" table="RequestMoney" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="requesterId" not-null="true" type="long" />
+		<property name="currencyId" not-null="true" type="long" />
+		<property name="amount" not-null="true" type="double" />
+		<property name="requestDate" not-null="true" type="java.util.Date" />
+		<property name="requesterMsg" type="string" length="1000"/>
+		<property name="status" type="long" />
+		<property name="responserId" not-null="true" type="long" />
+		<property name="responserMsg" type="string" length="1000" />
+		<property name="responseDate" type="java.util.Date" />
+		<property name="attempts" type="long" />
+		<property name="transactionId" type="long" />
+	</class>
+	
+	<class name="ReloadMoney" table="ReloadMoney" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="authId" not-null="true" type="long" />
+		<property name="trxId" type="long" />
+		<property name="historyId" not-null="true" type="long" />
+		<property name="accountId" not-null="true" type="long" />
+		<property name="reloadAmount" not-null="true" type="double" />
+		<property name="currentDate" not-null="true" type="java.util.Date" />
+		<property name="typeOfRequest" not-null="true" type="long" />
+	</class>
+	
+	<class name="AddMoney" table="AddMoney" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="authId" not-null="true" type="long" />
+		<property name="trxId" type="long" />
+		<!-- <property name="historyId" not-null="true" type="long" /> -->
+		<!-- <property name="accountId" not-null="true" type="long" /> -->
+		<property name="addMoneyAmount" not-null="true" type="double" />
+		<property name="currentDate" not-null="true" type="java.util.Date" />
+		<property name="typeOfRequest" not-null="true" type="long" />
+		<property name="orderId" not-null="true" type="string" />
+	</class>
+	
+	<class name="VelocityAndThreshold" table="VelocityAndThreshold" lazy="false" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<properties name="unique-velocity" unique="true" >
+			<property name="country" not-null="true" type="long" />
+			<property name="currency" not-null="true" type="long" />
+			<property name="transactiontype" not-null="true" type="long" />
+			<property name="userType" not-null="true" type="long" />
+		</properties>
+		<property name="minimumamount" length="30" type="double" />
+		<property name="maximumamount" length="30" type="double" />
+		
+	</class>
+	
+	<class name="WalletThreshold" table="WalletThreshold" lazy="false" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<properties name="unique-threshold" unique="true" >
+			<property name="country" not-null="true" type="long" />
+			<property name="currency" not-null="true" type="long" />
+		</properties>
+		<property name="maximumamount" length="30" type="double" />
+		
+	</class>
+	<class name="SendMoney" table="SendMoney" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<!-- ipAddress for web transaction -->
+		<property name="ipAddress" type="string" />
+		<!-- simNumber & imeiNumber for mobile transaction -->
+		<property name="simNumber" type="string" length="50"/>
+		<property name="imeiNumber" type="string" length="50"/>
+		
+		<property name="countryId" type="long" />
+		<property name="receiverMail" not-null="true" type="string" />
+		<property name="receiverType" type="long" />
+		<property name="receiverName" type="string" />
+		<property name="senderAuthId" type="long" />
+		<property name="senderName" type="string" />
+		<property name="receiverAuthId" type="long" />
+		<property name="amount" not-null="true" type="double" />
+		<property name="currency" not-null="true" type="long" />
+		<property name="currencyCode" not-null="true" type="string" />
+		<property name="message"  type="string" length="1000" />
+		<property name="languageId" type="long" />
+		<property name="recurring" type="boolean" />
+		<property name="transactionType" not-null="true" type="long" />
+		<property name="requestDate" not-null="true" type="java.util.Date" />
+		<property name="typeOfRequest" not-null="true" type="long" length="10" />
+	</class>
+	
+	<class name="SendMoneyTxn" table="SendMoneyTxn" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="sendMoneyId"  type="long" />
+		<property name="transactionId"  type="long" />
+		<property name="transactionStatus" not-null="true" type="long" />
+		<property name="failureMessage"  type="string" length="1000" />
+		<property name="occurences" type="integer" />
+		<property name="repeatJobs" type="integer" />
+		<property name="triggerDate" not-null="true" type="java.util.Date" />
+	</class>
+	
+	<class name="SendMoneyRecurring" table="SendMoneyRecurring" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="userJobName"  type="string" />
+		<property name="sendMoneyId"  type="long" />
+		<property name="fromDate" type="java.util.Date" />
+		<property name="toDate" type="java.util.Date" />
+		<property name="frequency" type="long" />
+		<property name="totalOccurences" type="integer" />
+	</class>
+	
+	<class name="Payment" table="Payment" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="orderId"  type="string" />
+		<property name="amount" type="double" />
+		<property name="currency"  type="string" />
+		<property name="customerAuthId" type="long" />
+		<property name="merchantAuthId" type="long" />
+		<property name="status" type="integer" />
+		<property name="ipAddress"  type="string" />
+		<property name="orderDate"  type="java.util.Date" />
+		<property name="txnId" type="long" />
+	</class>
+	
+	<class name="VelocitySetting" table="Velocity_Setting" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="userTypeId" not-null="true" type="long" />
+		<property name="countryId" not-null="true" type="long" />
+		<property name="currencyId" not-null="true" type="long" />
+		<property name="transactionTypeId" not-null="true" type="long" />
+		<property name="typeOfFrequenciesId" not-null="true" type="long" />
+		<property name="totalNoOfTransaction" not-null="true" type="long" />
+		<property name="totalVolumeOfAmount" not-null="true" type="double" />
+		<property name="creationDate" type="java.util.Date" />
+		<property name="modifyDate" type="java.util.Date" />
+		<property name="createdBy" type="string" length="50"/>
+		<property name="modifyBy" type="string" length="50"/>
+	</class>
+	
+	<query name="findHistoryByOrderId_accountId_success" >
+		<![CDATA[from History as history where history.isSuccess=true and history.orderId=? and history.accountId=? and history.amount=?]]>
+	</query>
+
+	<query name="findHistoryById" >
+		<![CDATA[from History as history where history.id=?]]>
+	</query>
+	
+	<query name="findReceiveMoneyById" >
+		<![CDATA[from RequestMoney as rm where rm.id=?]]>
+	</query>
+		
+	<query name="findReceiveMoneyByAuthId" >
+		<![CDATA[from RequestMoney as rm where rm.requesterId=?]]>
+	</query>	
+
+	<query name="findTransactionById" >
+		<![CDATA[from WalletTransaction as tx where tx.id=?]]>
+	</query>
+	
+	<query name="findTransactionByPayerAuthId" >
+		<![CDATA[from WalletTransaction as tx where tx.payer=? or tx.payee=? order by tx.creationDate desc]]>
+	</query>
+
+	<query name="findWalletFeeById" >
+		<![CDATA[from WalletFee as walletFee where walletFee.id=?]]>
+	</query>
+
+	<query name="findWalletFeeByTransaction" >
+		<![CDATA[from WalletFee as walletFee where walletFee.transactionId=?]]>
+	</query>
+
+	<query name="findWalletTaxById" >
+		<![CDATA[from WalletTax as walletTax where walletTax.id=?]]>
+	</query>
+	
+	<query name="findWalletTaxByTransaction" >
+		<![CDATA[from WalletTax as walletTax where walletTax.transactionId=?]]>
+	</query>
+
+	<query name="getVelocityAndThresholdListById" >
+		<![CDATA[from VelocityAndThreshold as velocity where velocity.id=?]]>
+	</query>
+	
+	<query name="getVelocityAndThresholdList" >
+		<![CDATA[from VelocityAndThreshold ]]>
+	</query>
+	
+	<query name="getVelocityAndThresholdByCountry" >
+		<![CDATA[from VelocityAndThreshold as ve where ve.country=? and ve.currency=? and ve.transactiontype=? and ve.userType=? ]]>
+	</query>
+	<query name="findSendMoneyById" >
+		<![CDATA[from SendMoney as re where re.id=? ]]>
+	</query>
+	<query name="findSendMoneyByReceiverAuthId" >
+		<![CDATA[from SendMoney as re where re.receiverAuthId=? ]]>
+	</query>
+	<query name="getWalletThresholdListById" >
+		<![CDATA[from WalletThreshold as walletthreshold where walletthreshold.id=?]]>
+	</query>
+	<query name="getWalletThresholdList" >
+		<![CDATA[from WalletThreshold ]]>
+	</query>
+	<query name="getWalletThresholdByCountry" >
+		<![CDATA[from WalletThreshold as ve where ve.country=? and ve.currency=? ]]>
+	</query>
+	<query name="findSendMoneyTxnByTxnId" >
+		<![CDATA[from SendMoneyTxn as re where re.transactionId=? ]]>
+	</query>
+	<query name="findSendMoneyRecurringBySendMoneyId" >
+		<![CDATA[from SendMoneyRecurring as re where re.sendMoneyId=? ]]>
+	</query>
+	<query name="findHistoryOrderId_Amount_By_AccountId" >
+		<![CDATA[from History as history where history.accountId=? order by history.id desc]]>
+	</query>
+	<query name="getVelocityFromVelocitySetting" >
+		<![CDATA[from VelocitySetting vs where vs.userTypeId=? and vs.countryId=? and vs.currencyId=? and vs.transactionTypeId=? order by modifydate desc]]>
+	</query>
+	<query name="getDefaultVelocityFromMasterVelocity" >
+		<![CDATA[from MasterVelocity mv where mv.userTypeId=? and mv.countryId=? and mv.currencyId=? and mv.transactionTypeId=?]]>
+	</query>
+</hibernate-mapping>

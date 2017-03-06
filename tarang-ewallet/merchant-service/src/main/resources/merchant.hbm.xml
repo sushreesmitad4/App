@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.tarang.ewallet.model" >
+
+	
+	<class name="BusinessOwnerInformation" table="BusinessOwnerInformation" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="addressId" column="addressId"  not-null="true" type="long" />
+		<property name="nameId" column="nameId" not-null="true" type="long" />
+		<property name="homeAddress" not-null="true" type="boolean" />
+	</class>
+	
+	<class name="BusinessInformation" table="BusinessInformation" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="ownerType"  not-null="true" type="long" />
+		<property name="legalName" not-null="true" type="string" length="50" />
+		<property name="phone"  column="phoneId" not-null="true" type="long" />
+		<property name="category" not-null="true" type="long" />
+		<property name="address" column="addressId" not-null="true" type="long" />
+		<property name="establishedMonth" not-null="true" type="string" />
+		<property name="establishedYear" not-null="true" type="string" />
+		<property name="currency"  not-null="true" type="long" />
+		<property name="averageTxnAmount"  not-null="true" type="long" />
+		<property name="heighestMonthlyVolume" not-null="true" type="long" />
+		<property name="percentageOfAnnualRevenue" not-null="true" type="long" />
+		<property name="website" type="string" length="40" />
+		<property name="subCategory" not-null="true" type="long" />
+	</class>
+	
+	<class name="Merchant" table="Merchant" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="businessInformation" column="businessInformationId" not-null="true" type="long" />
+		<property name="customerServicePhone" column="customerServicePhoneId" type="long" />
+		<property name="customerServiceEmail" not-null="true" type="string" length="40" />
+		<property name="authenticationId" column="authenticationId" not-null="true" type="long" />
+		<property name="businessOwnerInformation" column="businessOwnerInformationId" not-null="true" type="long" />
+		<property name="pageInfoId" column="pageInfoId" type="long" />
+	</class>
+	
+	<class name="MerchantPayInfo" table="MerchantPayInfo" >     
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>       
+		<property name="merchantCode" type="string" length="20"/>
+		<property name="successUrl" type="string" length="500"/>
+		<property name="failureUrl" type="string" length="500"/>
+	</class>
+	 
+	<query name="getBusinessOwnerInformationById" >
+		<![CDATA[from BusinessOwnerInformation as businessOwnerInformation where businessOwnerInformation.id=?]]>
+	</query>
+	
+	<query name="getBusinessInformationById" >
+		<![CDATA[from BusinessInformation as businessInformation where businessInformation.id=?]]>
+	</query>
+	
+	<query name="getMerchantIdById" >
+		<![CDATA[from Merchant as merchant where merchant.authenticationId=?]]>
+	</query>
+	
+	<query name="getMerchantPayInfoById" >
+		<![CDATA[from MerchantPayInfo as merchantPayInfo where merchantPayInfo.id=?]]>
+	</query>
+	
+	<query name="getBusinessInformationByPhoneId" >
+		<![CDATA[from BusinessInformation as businessInformation where businessInformation.phone=?]]>
+	</query>
+	
+	<!-- <query name="getMerchantById" >
+		<![CDATA[from Merchant as merchant where merchant.id=?]]>
+	</query>
+	 -->
+</hibernate-mapping>

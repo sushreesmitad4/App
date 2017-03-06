@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<Emails>
+	<Template name="resetpassword">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Account Password Reset Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {customerName},]]></Greeting>
+		<Body><![CDATA[Your password has been reset successfully. 	{newLine}
+		Your new password is: {newPassword} 			 	{newLine}
+		Once you have logged in to your {programmeName} account, you will be asked to change the password.
+		]]></Body>
+		<Signature><![CDATA[Thank you,   {newLine}
+{programmeSignature}        {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+  		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="customerregistration">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Account Registration Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {customerName},]]></Greeting>
+		<Body><![CDATA[Welcome to {programmeName}, your account has been successfully registered.
+To confirm your registration we need you to verify your email address by clicking <a href='{registrationUrl}/customer/emailStatusUpdate?id={authenticationID}' >here</a> 		]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="merchantregistration">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Merchant Account Registration Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {merchantName},]]></Greeting>
+		<Body><![CDATA[Welcome to {programmeName}, your account has been successfully registered.
+To confirm your registration we need you to verify your email address by clicking <a href='{registrationUrl}/merchant/emailStatusUpdate?id={authenticationID}' >here</a> 		]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="adminregistration">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Admin Account Registration Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {adminName},]]></Greeting>
+		<Body><![CDATA[Welcome to {programmeName}, your admin account has been successfully registered. {newLine}
+		Your new password is: {newPassword}  {newLine}
+		Login to your account by clicking <a href='{registrationUrl}/adminlogin' >here</a>
+		]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to. 
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="forgotpasswordmail">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Account Forgotten Password Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {customerName},]]></Greeting>
+		<Body><![CDATA[Your password has been reset successfully as a result of your forgotten password request. {newLine}
+		If you did not request this please inform us immediately. {newLine}
+		Your new password is: {newPassword}  {newLine}
+		]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="reloadmoneymail">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Payment Reload Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {payeeName},]]></Greeting>
+		<Body><![CDATA[We are pleased to provide you with the following details, about your {programmeName} Account. {newLine}
+		The amount of {payeeAmount} {payeeCurrency} has been successfully loaded to your account. {newLine}{newLine}
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="sendmoneymail">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Payment Received Transaction Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {payeeName},]]></Greeting>
+		<Body><![CDATA[We are pleased to provide you with the following details, about your {programmeName} Account. {newLine}
+		We have credited to your account the sum of {payeeAmount} {payeeCurrency} which was received from {payerName}. {newLine}
+		The reference for this payment was {newLine}
+		Message: {message} {newLine}
+		{newLine}
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="sendmoneymailnonregperson">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Payment Transaction Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear,]]></Greeting>
+		<Body><![CDATA[You have received the sum of {payeeAmount} {payeeCurrency} from {payerName}. {newLine}
+		The reference for this payment was {message}. {newLine}
+		To accept the payment, please register a Customer Account with {programmeName}.{newLine}
+		To register click <a href='{registrationUrl}/customer/registration' >here</a> {newLine}
+		{newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="receivemoneyacceptconfirmation">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName}  Payment Request Transaction Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {payeeName},]]></Greeting>
+		<Body><![CDATA[Your payment request of {payeeAmount} {payeeCurrency} has been accepted by {payerName}. {newLine}
+		Please login to your {programmeName} account for more details. {newLine}
+		{newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="receivemoneyrejectnotification">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Payment Request Transaction Declined]]></Subject>
+		<Greeting><![CDATA[Dear {payeeName},]]></Greeting>
+		<Body><![CDATA[Your payment request of {payeeAmount} {payeeCurrency} has been rejected by {payerName}. {newLine}
+		Please login to your {programmeName} account for more details.{newLine}
+		
+		{newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="receivemoneycancelnotification">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Payment Request Transaction Cancelled]]></Subject>
+		<Greeting><![CDATA[Dear {payerName},]]></Greeting>
+		<Body><![CDATA[Your payment request of {payeeAmount} {payeeCurrency} has been canceled by {payerName}. {newLine}
+		Please login to your {programmeName} account for more details.{newLine}
+		
+		{newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="receivemoneypendingnotification">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Payment Request Transaction Initiated]]></Subject>
+		<Greeting><![CDATA[Dear {payerName},]]></Greeting>
+		<Body><![CDATA[The payment request of {payeeAmount} {payeeCurrency} has been initiated successfully. {newLine}
+		It is pending acceptance by {payeeName}.{newLine}
+		Please login to your {programmeName} account for more details. {newLine}
+		{newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="onetimeipcheckcode">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} One Time Password For Login ]]></Subject>
+		<Greeting><![CDATA[Dear {userName},]]></Greeting>
+		<Body><![CDATA[You have logged in from a different IP address. {newLine}
+		Please find verification code {newCode}. {newLine}
+		As a security measure you need to enter the verification code to login to your {programmeName} account.{newLine}
+		{newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="useraccountrejectedbyadmin">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} User Account Status Update]]></Subject>
+		<Greeting><![CDATA[Dear {userName},]]></Greeting>
+		<Body><![CDATA[This is for your notification.  {newLine} 
+		Your {programmeName} {accountType} account has been rejected by {programmeName} administrator. {newLine}
+		{newLine}	
+		Reject Reason:       {newLine}
+		{rejectMessage}      {newLine} {newLine}
+		For more information about your account status, please contact {programmeName} administrator. {newLine}
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="userstatusupdatedbyadmin">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Account Update]]></Subject>
+		<Greeting><![CDATA[Dear {userName},]]></Greeting>
+		<Body><![CDATA[This is for your notification.  {newLine} 
+		Your {programmeName} {accountType} account has been updated by {programmeName} administrator. {newLine}
+		{newLine}
+		{programmeName} account: {userActive} {newLine}
+		User Status: {userStatus} {newLine}
+		Admin comment:     {newLine}
+		{admincomment}     {newLine} {newLine}
+		For more information about your account status, please contact {programmeName} administrator. {newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="create.dispute.message.for.merchant">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Dispute Create]]></Subject>
+		<Greeting><![CDATA[Dear {payeeName},]]></Greeting>
+		<Body><![CDATA[This is for your notification.  {newLine} 
+		The dispute {disputeType} has been raised by {payerName} with reference as below. {newLine}
+		Request Amount: {requestAmount} {requestCurrency} {newLine}
+		Message: {message} {newLine} {newLine}
+		For more information about your account status, please contact {programmeName} administrator. {newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="update.dispute.message.for.customer">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Dispute Update]]></Subject>
+		<Greeting><![CDATA[Dear {payerName},]]></Greeting>
+		<Body><![CDATA[This is for your notification.  {newLine} 
+		The dispute type {disputeType} has been updated by {updatedName} with reference as below. {newLine}
+		Request Amount: {requestAmount} {requestCurrency} {newLine}
+		Message: {message} {newLine} {newLine}
+		For more information about your account status, please contact {programmeName} administrator. {newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="update.dispute.message.for.merchant">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Dispute Update]]></Subject>
+		<Greeting><![CDATA[Dear {payeeName},]]></Greeting>
+		<Body><![CDATA[This is for your notification.  {newLine} 
+		The dispute type {disputeType} has been updated by {updatedName} with reference as below. {newLine} {newLine}
+		Request Amount: {requestAmount} {requestCurrency} {newLine}
+		Approved Amount: {approvedAmount} {approvedCurrency} {newLine}
+		Message: {message} {newLine} {newLine}
+		For more information about your account status, please contact {programmeName} administrator. {newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="system.action.message.for.customer">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Dispute Update]]></Subject>
+		<Greeting><![CDATA[Dear {payerName},]]></Greeting>
+		<Body><![CDATA[This is for your notification.  {newLine} 
+		The dispute type {disputeType} has been updated by {updatedName} with reference as below. {newLine}
+		Request Amount: {requestAmount} {requestCurrency} {newLine}
+		Message: {message} {newLine} {newLine}
+		For more information about your account status, please contact {programmeName} administrator. {newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="system.action.message.for.merchant">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Dispute Update]]></Subject>
+		<Greeting><![CDATA[Dear {payeeName},]]></Greeting>
+		<Body><![CDATA[This is for your notification.  {newLine} 
+		The dispute type {disputeType} has been updated by {updatedName} with reference as below. {newLine} {newLine}
+		Request Amount: {requestAmount} {requestCurrency} {newLine}
+		Approved Amount: {approvedAmount} {approvedCurrency} {newLine}
+		Message: {message} {newLine} {newLine}
+		For more information about your account status, please contact {programmeName} administrator. {newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="recurring.payment.failure.receiver">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Recurring Payment Request Transaction Failed]]></Subject>
+		<Greeting><![CDATA[Dear {receiverName},]]></Greeting>
+		<Body><![CDATA[Your recurring payment of {payeeAmount} {payeeCurrency} from {senderName} on {payDate} has failed. {newLine}
+		Please login to your {programmeName} account for more details. {newLine}
+		{newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="recurring.payment.failure.sender">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Recurring Payment Request Transaction Failed]]></Subject>
+		<Greeting><![CDATA[Dear {senderName},]]></Greeting>
+		<Body><![CDATA[Your recurring payment of {payeeAmount} {payeeCurrency} to {receiverName} on {payDate} has failed. {newLine}
+		Please login to your {programmeName} account for more details. {newLine}
+		{newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+	<Template name="recurring.payment.failure.receiver.non.registered.person">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{programmeName} Recurring Payment Request Transaction Failed]]></Subject>
+		<Greeting><![CDATA[Dear,]]></Greeting>
+		<Body><![CDATA[Your recurring payment of {payeeAmount} {payeeCurrency} from {senderName} on {payDate} has failed. {newLine}
+		Please register with {programmeName} and login to your account for more details. {newLine}
+		To register click <a href='{registrationUrl}/customer/registration' >here</a> {newLine}
+		{newLine} 
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+	</Template>
+<Template name="feedback.reply.by.admin.to.customer.or.merchant">
+	<Email code="1" Language="English">
+		<Subject><!-- System generated --></Subject>
+		<Greeting><![CDATA[Dear {userName},]]></Greeting>
+		<Body><![CDATA[Your {queryTypeName} sent on {postedDate} has been responded by {programmeName} admin with reference as below. {newLine}
+		{newLine}
+		Your message: {newLine} {oldMessage} {newLine}
+		{newLine}
+		Response message: {newLine} {responseMessage} {newLine}
+		{newLine}
+		Thank you for using {programmeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {programmeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+</Template>
+<Template name="mobile.wallet.mpin.generation.confirmation">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{mobileProgrammeName} Account New MPIN Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {personName},]]></Greeting>
+		<Body><![CDATA[Your new MPIN (Mobile Personal Identification Number) created successfully as a result of
+		your MPIN generation request. {newLine}
+		Your {mobileProgrammeName} {userTypeName} account is active now. {newLine}
+		Please login from your device. {newLine}{newLine}
+		If you did not request this please inform us immediately. {newLine}
+		]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {mobileProgrammeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+</Template>
+<Template name="mobile.wallet.changed.mpin.confirmation">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{mobileProgrammeName} Account MPIN Changed Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {personName},]]></Greeting>
+		<Body><![CDATA[Your MPIN (Mobile Personal Identification Number) updated successfully as a result of
+		your change MPIN request for your {userTypeName} account. {newLine}
+		If you did not request this please inform us immediately. {newLine}
+		{newLine} 
+		Thank you for using {mobileProgrammeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {mobileProgrammeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+</Template>
+<Template name="mobile.wallet.mpin.forgot.confirmation">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{mobileProgrammeName} Account Forgotten MPIN Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {personName},]]></Greeting>
+		<Body><![CDATA[Your MPIN (Mobile Personal Identification Number) given below as a result of
+		your forgotten MPIN request for your {userTypeName} account. {newLine}
+		Your MPIN is: {currentMPin}  {newLine}{newLine}
+		If you did not request this please inform us immediately. {newLine}
+		{newLine}
+		Thank you for using {mobileProgrammeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {mobileProgrammeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+</Template>
+<Template name="mobile.wallet.deactivate.confirmation">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{mobileProgrammeName} Account Deactivate Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {personName},]]></Greeting>
+		<Body><![CDATA[Your {mobileProgrammeName} {userTypeName} account deactivated successfully as a result of
+		your deactivate {mobileProgrammeName} request. {newLine}{newLine}
+		If you did not request this please inform us immediately. {newLine}
+		Please note, for login to the {mobileProgrammeName} account from your device need to activate again.
+		{newLine}
+		Thank you for using {mobileProgrammeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {mobileProgrammeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+</Template>
+<Template name="mobile.wallet.unblock.confirmation.action.takenby.system">
+	<Email code="1" Language="English">
+		<Subject><![CDATA[{mobileProgrammeName} Account Unblocked Confirmation]]></Subject>
+		<Greeting><![CDATA[Dear {personName},]]></Greeting>
+		<Body><![CDATA[Your {mobileProgrammeName} {userTypeName} account is active and unblocked. {newLine}
+		It was blocked due to wrong MPIN attempt login from your device.{newLine}{newLine}
+		Please note: If this action was not attempted by you, then please change your password after login to the
+		{mobileProgrammeName} account.		
+		{newLine}
+		Thank you for using {mobileProgrammeName}.]]></Body>
+		<Signature><![CDATA[Thank you, {newLine}  
+{programmeSignature} {newLine}
+{programmeEmailAddress}
+		]]></Signature>
+		<Disclaimer><![CDATA[
+For more information about {mobileProgrammeName}, please visit our website at {programmeWebsite}. {newLine}
+Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.
+		]]></Disclaimer>
+	</Email>
+</Template>
+</Emails>

@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.tarang.ewallet.model" >
+
+	<class name="Language" table="Language" >
+		<id name="id" type="long" column="id" />
+		<property name="code" not-null="true" unique="true" type="string"
+			length="2" />
+		<property name="name" not-null="true" unique="true" type="string"
+			length="15" />
+	</class>
+
+	<class name="LanguageLocale" table="Language_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-language" unique="true" >
+			<property name="langId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="code" not-null="true" unique="true" type="string" length="2" />
+		<property name="name" not-null="true" unique="true" type="string" length="15" />
+	</class>
+
+
+	<!-- <class name="Menu" table="Menu" >
+		<id name="id" type="long" column="id" />
+		<property name="parentId" type="long" />
+		<property name="isParent" not-null="true" type="boolean" />
+		<property name="menuName" not-null="true" type="string" length="50" />
+		<property name="pageName" not-null="true" type="string" length="100" />
+		<property name="pageUrl" not-null="true" type="string" length="100" />
+		<property name="isDeleted" type="boolean" length="50" />
+		<property name="displayOrder" type="long" length="50" />
+	</class>
+
+	<class name="MenuLocale" table="Menu_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-menu" unique="true" >
+			<property name="menuId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="menuName" not-null="true" type="string" length="50" />
+	</class>  -->
+
+	<class name="Country" table="Country" >
+		<id name="id" type="long" column="id" />
+		<property name="code" not-null="true" unique="true" type="string" length="3" />
+		<property name="name" not-null="true" unique="true" type="string" length="30" />
+		<property name="pcode" not-null="true" unique="true" type="string" length="4" />
+		<property name="currency" not-null="true" type="long" />
+	</class>
+
+	<class name="CountryLocale" table="Country_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-country" unique="true" >
+			<property name="countryId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="code" not-null="true" unique="true" type="string" length="3" />
+		<property name="name" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="Currency" table="Currency" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="20" />
+		<property name="code" not-null="true" unique="true" type="string" length="3" />
+	</class>
+
+	<class name="CurrencyLocale" table="Currency_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-currency" unique="true" >
+			<property name="currencyId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="20" />
+	</class>
+
+	<class name="CardType" table="CardType" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="CardTypeLocale" table="CardType_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-cardtype" unique="true" >
+			<property name="cardTypeId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="Frequency" table="Frequency" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="20" />
+	</class>
+
+	<class name="FrequencyLocale" table="Frequency_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-frequency" unique="true" >
+			<property name="frequencyId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="20" />
+	</class>
+
+	<class name="TransactionStatus" table="TransactionStatus" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="20" />
+	</class>
+
+	<class name="TransactionStatusLocale" table="TransactionStatus_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-transactionstatus" unique="true" >
+			<property name="transactionstatusId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="20" />
+	</class>
+	
+	<class name="ReceiveMoneyStatus" table="ReceiveMoneyStatus" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="20" />
+	</class>
+
+	<class name="ReceiveMoneyStatusLocale" table="ReceiveMoneyStatus_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-receivemoneystatus" unique="true" >
+			<property name="receivemoneystatusId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="20" />
+	</class>
+
+	<class name="CTransactionType" table="CTransactionType" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="40" />
+	</class>
+
+	<class name="CTransactionTypeLocale" table="CTransactionType_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-cttype" unique="true" >
+			<property name="ctTypeId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="40" />
+	</class>
+
+	<class name="MTransactionType" table="MTransactionType" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="40" />
+	</class>
+
+	<class name="MTransactionTypeLocale" table="MTransactionType_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-mttype" unique="true" >
+			<property name="mtTypeId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="40" />
+	</class>
+
+	<class name="ATransactionType" table="ATransactionType" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="40" />
+	</class>
+
+	<class name="ATransactionTypeLocale" table="ATransactionType_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-attype" unique="true" >
+			<property name="atTypeId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="40" />
+	</class>
+
+	<class name="MerchantOwnerType" table="MerchantOwnerType" >
+		<id name="id" type="long" column="id" />
+		<property name="type" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="MerchantOwnerTypeLocale" table="MerchantOwnerTypeLocale_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-mownertype" unique="true" >
+			<property name="motId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="type" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="MerchantBusinessCategory" table="MerchantBusinessCategory" >
+		<id name="id" type="long" column="id" />
+		<property name="category" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="MerchantBusinessCategoryLocale" table="MerBusinessCategory_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-mbcategory" unique="true" >
+			<property name="mbcId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="category" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="MerchantBusinessSubCategory" table="MerchantBusinessSubCategory" >
+		<id name="id" type="long" column="id" />
+		<property name="category" not-null="true" type="long" />
+		<property name="subCategory" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="MerchantBusinessSubCategoryLocale" table="MerBusinessSubCategory_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-mbcategory" unique="true" >
+			<property name="mbcId" not-null="true" type="long" />
+			<property name="mbscId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="subCategory" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="MerchantAvgTxAmount" table="MerchantAvgTxAmount" >
+		<id name="id" type="long" column="id" />
+		<property name="avgAmount" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="MerchantAvgTxAmountLocale" table="MerchantAvgTxAmount_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-matamount" unique="true" >
+			<property name="matId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="avgAmount" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="MerchantHighestMonthlyVolume" table="MerchantHighestMonthlyVolume" >
+		<id name="id" type="long" column="id" />
+		<property name="highestMonthlyVolume" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="MerchantHighestMonthlyVolumeLocale" table="MerHighestMonVolume_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-mhmvolume" unique="true" >
+			<property name="hmvId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="highestMonthlyVolume" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="MerchantPercentageAnualRevenue" table="MerchantPercentageAnualRevenue" >
+		<id name="id" type="long" column="id" />
+		<property name="anualRevenue" not-null="true" unique="true" type="string" length="30" />
+	</class>
+	<class name="MerchantPercentageAnualRevenueLocale" table="MerPerAnualRevenue_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-mparevenue" unique="true" >
+			<property name="mparId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="anualRevenue" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="UserStatus" table="UserStatus" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="15" />
+	</class>
+
+	<class name="UserStatusLocale" table="UserStatus_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-userstatus" unique="true" >
+			<property name="userStatusId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="15" />
+	</class>
+
+	<class name="HintQuestion" table="HintQuestion" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="HintQuestionLocale" table="HintQuestion_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-hint" unique="true" >
+			<property name="hintId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+	
+	<class name="Region" table="Region" >
+		<id name="id" type="long" column="id" />
+		<property name="countryId" not-null="true" type="long" />
+		<property name="region" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="RegionLocale" table="Region_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-countryregion" unique="true" >
+			<property name="countryId" not-null="true" type="long" />
+			<property name="regionId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="region" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="Title" table="Title" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="20" />
+	</class>
+
+	<class name="TitleLocale" table="Title_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-title" unique="true" >
+			<property name="titleId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="20" />
+	</class>
+
+	<class name="MoneyAccountStatus" table="MoneyAccountStatus" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="MoneyAccountStatusLocale" table="MoneyAccountStatus_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-moneyaccountstatus" unique="true" >
+			<property name="moneyAccountStatusId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="30" />
+	</class>
+	
+	<class name="MoneyAccountDeleteStatus" table="MoneyAccountDeleteStatus" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="MoneyAccountDeleteStatusLocale" table="MoneyAccDeleteStatus_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-moneyaccountdeletestatus" unique="true" >
+			<property name="moneyAccountDeleteStatusId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="BankAccountType" table="BankAccountType" >
+		<id name="id" type="long" column="id" />
+		<property name="countryId" not-null="true" type="long" />
+		<property name="type" not-null="true" type="string" length="30" />
+	</class>
+
+	<class name="BankAccountTypeLocale" table="BankAccountType_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-countryregion" unique="true" >
+			<property name="countryId" not-null="true" type="long" />
+			<property name="bankAccountTypeId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="type" not-null="true" type="string" length="30" />
+	</class>
+
+	<class name="ReportType" table="ReportType" >
+		<id name="id" type="long" column="id" />
+		<property name="userTypeId" not-null="true" type="long" />
+		<property name="name" not-null="true" type="string" length="50" />
+	</class>
+
+	<class name="ReportTypeLocale" table="ReportType_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-reportcountlang" unique="true" >
+			<property name="reportTypeId" not-null="true" type="long" />
+			<property name="userTypeId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" type="string" length="50" />
+	</class>
+	
+	<class name="FeeType" table="FeeType" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="100" />
+	</class>
+	
+	<class name="FeeTypeLocale" table="FeeType_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-feetype" unique="true" >
+			<property name="feeId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="100" />
+	</class>
+	
+	<class name="UserType" table="UserType" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="UserTypeLocale" table="UserType_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-usertype" unique="true" >
+			<property name="userTypeId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="30" />
+	</class>
+
+	<class name="FeeService" table="FeeService" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="FeeServiceLocale" table="FeeService_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-feeservice" unique="true" >
+			<property name="feeServiceId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="FeeOperationType" table="FeeOperationType" >
+		<id name="id" type="long" column="id" />
+		<property name="feeServiceId" not-null="true" type="long" />
+		<property name="userTypeId" not-null="true" type="long" />
+		<property name="name" not-null="true" type="string" length="100" />
+	</class>
+
+	<class name="FeeOperationTypeLocale" table="FeeOperationType_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-feeoperationtype" unique="true" >
+			<many-to-one name="feeOperationType" class="FeeOperationType" column="feeOperationType" not-null="true" /> 
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" type="string" length="100" />
+	</class>
+
+	<class name="FeePayingEntity" table="FeePayingEntity" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="FeePayingEntityLocale" table="FeePayingEntity_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-feePayingEntity" unique="true" >
+			<property name="feePayingEntityId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+	
+	<class name="MasterAmountWallet" table="MasterAmountWallet" >
+		<id name="id" type="long" column="id" />
+		<property name="currency" not-null="true" unique="true" type="long" />
+		<property name="walletAmount" not-null="true" type="double" />
+	</class>
+
+	<class name="MasterFeeWallet" table="MasterFeeWallet" >
+		<id name="id" type="long" column="id" />
+		<property name="currency" not-null="true" unique="true" type="long" />
+		<property name="fee" not-null="true" type="double" />
+	</class>
+	
+	<class name="MasterTaxWallet" table="MasterTaxWallet" >
+		<id name="id" type="long" column="id" />
+		<property name="currency" not-null="true" unique="true" type="long" />
+		<property name="tax" not-null="true" type="double" />
+	</class>
+	
+	<class name="FeeTimeFrequency" table="FeeTimeFrequency" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="FeeTimeFrequencyLocale" table="FeeTimeFrequency_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-feeTimeFrequency" unique="true" >
+			<property name="feeTimeFrequencyId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+	
+	<class name="TrxTimePeriod" table="TrxTimePeriod" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="TrxTimePeriodLocale" table="TrxTimePeriod_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-trxTimePeriodLocale" unique="true" >
+			<property name="trxTimePeriodId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+	
+	<class name="DestinationType" table="DestinationType" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="DestinationTypeLocale" table="DestinationType_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-destinationTypeLocale" unique="true" >
+			<property name="destinationtypeId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="DisputeType" table="DisputeType" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="DisputeTypeLocale" table="DisputeType_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-disputeTypeLocale" unique="true" >
+			<property name="disputeTypeId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="AccountClosureStatus" table="AccountClosureStatus" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="AccountClosureStatusLocale" table="AccountClosureStatus_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-accountClosureStatusLocale" unique="true" >
+			<property name="accountClosureStatusId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="DisputeStatus" table="DisputeStatus" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="DisputeStatusLocale" table="DisputeStatus_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-disputeStatusLocale" unique="true" >
+			<property name="disputeStatusLocaleId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+    <class name="PaymentMessage" table="PaymentMessage" >
+		<id name="id" type="long" column="id" />
+		<properties name="paymentMessages" unique="true" >
+			<property name="errorCode" not-null="true" type="string" />
+			<property name="errorMessage" not-null="true" type="string" />
+		 </properties>
+	</class>
+	
+	<class name="QueryOrFeedback" table="QueryOrFeedback" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+	
+	<class name="QueryOrFeedbackLocale" table="QueryOrFeedback_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-queryOrFeedbackLocale" unique="true" >
+			<property name="queryOrFeedbackId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+	
+	<class name="ErrorCode" table="ErrorCode" >
+		<id name="id" type="long" column="id" />
+		<properties name="errorCodes" unique="true" >
+			<property name="errorCode" not-null="true" type="string" />
+			<property name="errorMessage" not-null="true" type="string" />
+		 </properties>
+	</class>
+	
+	<class name="ChannelType" table="ChannelType" >
+		<id name="id" type="long" column="id" />
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+
+	<class name="ChannelTypeLocale" table="ChannelType_Locale" >
+		<id name="id" type="long" column="id" />
+		<properties name="unique-channelTypeLocale" unique="true" >
+			<property name="channelTypeId" not-null="true" type="long" />
+			<property name="languageId" not-null="true" type="long" />
+		</properties>
+		<property name="name" not-null="true" unique="true" type="string" length="50" />
+	</class>
+	
+	<class name="PGCode" table="PGCode" >
+		<id name="id" type="long" column="id" />
+		<properties name="pgCodes" unique="true" >
+			<property name="pgCode" not-null="true" type="string" />
+			<property name="pgMessage" not-null="true" type="string" />
+		 </properties>
+	</class>
+	
+	<class name="MasterVelocity" table="Master_Velocity" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<properties name="unique-master-velocity" unique="true" >
+			<property name="userTypeId" not-null="true" type="long" />
+			<property name="countryId" not-null="true" type="long" />
+			<property name="currencyId" not-null="true" type="long" />
+			<property name="transactionTypeId" not-null="true" type="long" />
+		</properties>
+		<property name="typeOfFrequenciesId" not-null="true" type="long" />
+		<property name="totalNoOfTransaction" not-null="true" type="long" />
+		<property name="totalVolumeOfAmount" not-null="true" type="double" />
+	</class>
+	
+	<query name="getDefaultLanguages" >
+		<![CDATA[from Language as language]]>
+	</query>
+	
+	<query name="getDefaultLanguageIds" >
+		<![CDATA[select language.id from Language as language]]>
+	</query>
+
+	<query name="getLanguagesForGivenLanguage" >
+		<![CDATA[select new Language(ll.langId, ll.code, ll.name) from LanguageLocale as ll where ll.languageId=?]]>
+	</query>
+
+<!-- 
+	<query name="getDefaultMenus" >
+		<![CDATA[from Menu as menu]]>
+	</query>
+	
+	
+	<query name="getParentLangMenus" >
+		<![CDATA[select new Menu(ml.menuId, m.parentId, m.isParent, ml.menuName,m.pageName,m.pageUrl,m.isDeleted,m.displayOrder) from MenuLocale as ml, Menu as m where ml.menuId=m.id and m.isParent=true and ml.languageId=?]]>
+	</query>
+	
+	<query name="getParentMenus" >
+		<![CDATA[from Menu as menu where menu.isParent=true]]>
+	</query>
+	
+	
+	<query name="getMenusForGivenLanguage" >
+		<![CDATA[select new Menu(ml.menuId, m.parentId, m.isParent, ml.menuName) from MenuLocale as ml, Menu as m where ml.menuId=m.id and ml.languageId=?]]>
+	</query>  -->
+
+	<query name="getDefaultCountries" >
+		<![CDATA[from Country as country]]>
+	</query>
+	
+	<query name="getCountriesForGivenLanguage" >
+		<![CDATA[select new Country(cl.countryId, cl.code, cl.name) from CountryLocale as cl where cl.languageId=?]]>
+	</query>
+	
+	<query name="getCountrieById" >
+		<![CDATA[from Country as country where country.id=?]]>
+	</query>
+	
+	<query name="getDefaultCurrency" >
+		<![CDATA[from Currency as currency]]>
+	</query>
+	
+	<query name="getCurrencyForGivenLanguage" >
+		<![CDATA[select new Currency(cl.currencyId, cl.name) from CurrencyLocale as cl where cl.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultCardType" >
+		<![CDATA[from CardType as cardType]]>
+	</query>
+	
+	<query name="getCardTypeForGivenLanguage" >
+		<![CDATA[select new CardType(cl.cardTypeId, cl.name) from CardTypeLocale as cl where cl.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultFrequency" >
+		<![CDATA[from Frequency as frequency]]>
+	</query>
+
+	
+	<query name="getFrequencyForGivenLanguage" >
+		<![CDATA[select new Frequency(fl.frequencyId, fl.name) from FrequencyLocale as fl where fl.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultUserType" >
+		<![CDATA[from UserType as userType]]>
+	</query>
+	
+	<query name="getUserTypeForGivenLangauge" >
+		<![CDATA[select new UserType(ul.userTypeId, ul.name) from UserTypeLocale as ul where ul.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultCTransactionType" >
+		<![CDATA[from CTransactionType as cTransactionType]]>
+	</query>
+	
+	<query name="getCTransactionTypeForGivenLangauge" >
+		<![CDATA[select new CTransactionType(cl.ctTypeId, cl.name) from CTransactionTypeLocale as cl where cl.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultMTransactionType" >
+		<![CDATA[from MTransactionType as mTransactionType]]>
+	</query>
+	
+	<query name="getMTransactionTypeForGivenLangauge" >
+		<![CDATA[select new MTransactionType(ml.mtTypeId, ml.name) from MTransactionTypeLocale as ml where ml.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultATransactionType" >
+		<![CDATA[from ATransactionType as aTransactionType]]>
+	</query>
+	
+	<query name="getATransactionTypeForGivenLangauge" >
+		<![CDATA[select new ATransactionType(al.atTypeId, al.name) from ATransactionTypeLocale as al where al.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultMerchantOwnerType" >
+		<![CDATA[from MerchantOwnerType as merchantOwnerType]]>
+	</query>
+	
+	<query name="getMerchantOwnerTypeForGivenLangauge" >
+		<![CDATA[select new MerchantOwnerType(ml.motId, ml.type) from MerchantOwnerTypeLocale as ml where ml.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultMerchantBusinessCategory" >
+		<![CDATA[from MerchantBusinessCategory as merchantBusinessCategory]]>
+	</query>
+	
+	<query name="getMerchantBusinessCategoryForGivenLangauge" >
+		<![CDATA[select new MerchantBusinessCategory(ml.mbcId, ml.category) from MerchantBusinessCategoryLocale as ml where ml.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultMerchantBusinessSubCategory" >
+		<![CDATA[from MerchantBusinessSubCategory as merchantBusinessSubCategory]]>
+	</query>
+	
+	<query name="getMerchantBusinessSubCategoryForGivenLangauge" >
+		<![CDATA[select new MerchantBusinessSubCategory(mb.mbcId, mb.mbscId, mb.subCategory) from MerchantBusinessSubCategoryLocale as mb where mb.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultMerchantAvgTxAmount" >
+		<![CDATA[from MerchantAvgTxAmount as merchantAvgTxAmount]]>
+	</query>
+	
+	<query name="getMerchantAvgTxAmountForGivenLangauge" >
+		<![CDATA[select new MerchantAvgTxAmount(ml.matId, ml.avgAmount) from MerchantAvgTxAmountLocale as ml where ml.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultMerchantHighestMonthlyVolume" >
+		<![CDATA[from MerchantHighestMonthlyVolume as merchantHighestMonthlyVolume]]>
+	</query>
+	
+	<query name="getMerchantHighestMonthlyVolumeForGivenLangauge" >
+		<![CDATA[select new MerchantHighestMonthlyVolume(ml.hmvId, ml.highestMonthlyVolume) from MerchantHighestMonthlyVolumeLocale as ml where ml.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultMerchantPercentageAnualRevenue" >
+		<![CDATA[from MerchantPercentageAnualRevenue as merchantPercentageAnualRevenue]]>
+	</query>
+	
+	<query name="getMerchantPercentageAnualRevenueForGivenLangauge" >
+		<![CDATA[select new MerchantPercentageAnualRevenue(ml.mparId, ml.anualRevenue) from MerchantPercentageAnualRevenueLocale as ml where ml.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultUserStatus" >
+		<![CDATA[from UserStatus as UserStatus]]>
+	</query>
+	
+	<query name="getUserStatusForGivenLangauge" >
+		<![CDATA[select new UserStatus(ul.userStatusId, ul.name) from UserStatusLocale as ul where ul.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultHints" >
+		<![CDATA[from HintQuestion as hq]]>
+	</query>
+	
+	<query name="getHintsForGivenLangauge" >
+		<![CDATA[select new HintQuestion(hq.hintId, hq.name) from HintQuestionLocale as hq where hq.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultRegions" >
+		<![CDATA[from Region as region]]>
+	</query>
+	
+	<query name="getRegionsForGivenLangauge" >
+		<![CDATA[select new Region(mb.regionId, mb.countryId, mb.region) from RegionLocale as mb where mb.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultTitles" >
+		<![CDATA[from Title as title]]>
+	</query>
+	
+	<query name="getTitlesForGivenLanguage" >
+		<![CDATA[select new Title(t.titleId, t.name) from TitleLocale as t where t.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultMoneyAccountStatus" >
+		<![CDATA[from MoneyAccountStatus as moneyAccountStatus]]>
+	</query>
+	
+	<query name="getMoneyAccountStatusForGivenLangauge" >
+		<![CDATA[select new MoneyAccountStatus(m.moneyAccountStatusId, m.name) from MoneyAccountStatusLocale as m where m.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultMoneyAccountDeleteStatus" >
+		<![CDATA[from MoneyAccountDeleteStatus as moneyAccountDeleteStatus]]>
+	</query>
+	
+	<query name="getMoneyAccountDeleteStatusForGivenLangauge" >
+		<![CDATA[select new MoneyAccountDeleteStatus(m.moneyAccountDeleteStatusId, m.name) from MoneyAccountDeleteStatusLocale as m where m.languageId=?]]>
+	</query>
+
+	<query name="getDefaultBankAccountTypes" >
+		<![CDATA[from BankAccountType as bankAccountType]]>
+	</query>
+	
+	<query name="getBankAccountTypesForGivenLangauge" >
+		<![CDATA[select new BankAccountType(bal.bankAccountTypeId, bal.countryId, bal.type) from BankAccountTypeLocale as bal where bal.languageId=?]]>
+	</query>
+
+	<query name="getDefaultReportTypes" >
+		<![CDATA[from ReportType as reportType]]>
+	</query>
+	
+	<query name="getReportTypesForGivenLangauge" >
+		<![CDATA[select new ReportType(rt.reportTypeId, rt.userTypeId, rt.name) from ReportTypeLocale as rt where rt.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultFeeTypes" >
+		<![CDATA[from FeeType as feeType]]>
+	</query>
+	
+	<query name="getFeeTypesForGivenLangauge" >
+		<![CDATA[select new FeeType(ft.feeId, ft.name) from FeeTypeLocale as ft where ft.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultFeeServices" >
+		<![CDATA[from FeeService as feeService]]>
+	</query>
+	
+	<query name="getFeeServicesForGivenLangauge" >
+		<![CDATA[select new FeeService(st.feeServiceId, st.name) from FeeServiceLocale as st where st.languageId=?]]>
+	</query>
+
+	<query name="getDefaultFeeOperationTypes" >
+		<![CDATA[from FeeOperationType as operationType]]>
+	</query>
+	
+	<query name="getFeeOperationTypesForGivenLangauge" >
+		<![CDATA[select new FeeOperationType(fot.feeOperationType.id, fot.feeOperationType.feeServiceId, fot.feeOperationType.userTypeId, fot.name) from FeeOperationTypeLocale as fot where fot.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultFeePayingEntity" >
+		<![CDATA[from FeePayingEntity as FeePayingEntity]]>
+	</query>
+	
+	<query name="getFeePayingEntityForGivenLanguage" >
+		<![CDATA[select new FeePayingEntity(cl.feePayingEntityId, cl.name) from FeePayingEntityLocale as cl where cl.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultFeeTimeFrequency" >
+		<![CDATA[from FeeTimeFrequency as FeeTimeFrequency]]>
+	</query>
+	
+	<query name="getFeeTimeFrequencyForGivenLanguage" >
+		<![CDATA[select new FeeTimeFrequency(cl.feeTimeFrequencyId, cl.name) from FeeTimeFrequencyLocale as cl where cl.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultTrxTimePeriod" >
+		<![CDATA[from TrxTimePeriod as TrxTimePeriod]]>
+	</query>
+	
+	<query name="getTrxTimePeriodForGivenLanguage" >
+		<![CDATA[select new TrxTimePeriod(cl.trxTimePeriodId, cl.name) from TrxTimePeriodLocale as cl where cl.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultDestinationType" >
+		<![CDATA[from DestinationType as DestinationType]]>
+	</query>
+	
+	<query name="getDestinationTypeForGivenLanguage" >
+		<![CDATA[select new DestinationType(cl.destinationtypeId, cl.name) from DestinationTypeLocale as cl where cl.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultTransactionStatus" >
+		<![CDATA[from TransactionStatus as TransactionStatus]]>
+	</query>
+	
+	<query name="getTransactionStatusGivenLanguage" >
+		<![CDATA[select new TransactionStatus(cl.transactionstatusId, cl.name) from TransactionStatusLocale as cl where cl.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultReceiveMoneyStatus" >
+		<![CDATA[from ReceiveMoneyStatus as ReceiveMoneyStatus]]>
+	</query>
+	
+	<query name="getReceiveMoneyStatusGivenLanguage" >
+		<![CDATA[select new ReceiveMoneyStatus(cl.receivemoneystatusId, cl.name) from ReceiveMoneyStatusLocale as cl where cl.languageId=?]]>
+	</query>
+	
+	<query name="getMasterAmountWalletCurrencyWise" >
+		<![CDATA[select ma.currency, ma.walletAmount from  MasterAmountWallet as ma]]>
+	</query>
+	
+	<query name="getDefaultDisputeType" >
+		<![CDATA[from DisputeType as DisputeType]]>
+	</query>
+	
+	<query name="getDisputeTypeForGivenLanguage" >
+		<![CDATA[select new DisputeType(dt.disputeTypeId, dt.name) from DisputeTypeLocale as dt where dt.languageId=?]]>
+	</query>
+	
+	<query name="getDefaultChannelType" >
+		<![CDATA[from ChannelType as ChannelType]]>
+	</query>
+	
+	<query name="getChannelTypeForGivenLanguage" >
+		<![CDATA[select new ChannelType(ct.channelTypeId, ct.name) from ChannelTypeLocale as ct where ct.languageId=?]]>
+	</query>
+
+	<query name="getDefaultAccountClosureStatus" >
+		<![CDATA[from AccountClosureStatus as AccountClosureStatus]]>
+	</query>
+	
+	<query name="getAccountClosureStatusForGivenLanguage" >
+		<![CDATA[select new AccountClosureStatus(acs.accountClosureStatusId, acs.name) from AccountClosureStatusLocale as acs where acs.languageId=?]]>
+	</query>
+
+	<query name="getDefaultDisputeStatus" >
+		<![CDATA[from DisputeStatus as DisputeStatus]]>
+	</query>
+	
+	<query name="getDisputeStatusForGivenLanguage" >
+		<![CDATA[select new DisputeStatus(ds.disputeStatusLocaleId, ds.name) from DisputeStatusLocale as ds where ds.languageId=?]]>
+	</query>
+	
+	<query name="getTaxesCurrencyWise" >
+		<![CDATA[select ma.currency, ma.tax from  MasterTaxWallet as ma]]>
+	</query>
+	
+	<query name="getFeesCurrencyWise" >
+		<![CDATA[select ma.currency, ma.fee from  MasterFeeWallet as ma]]>
+	</query>
+	
+	<query name="getPaymentMessages" >
+		<![CDATA[select pm.errorCode, pm.errorMessage from  PaymentMessage as pm]]>
+	</query>
+	<query name="getQueryOrFeedback" >
+		<![CDATA[from QueryOrFeedback as QueryOrFeedback]]>
+	</query>
+	<query name="getQueryOrFeedbackForGivenLanguage" >
+		<![CDATA[select new QueryOrFeedback(qf.queryOrFeedbackId, qf.name) from QueryOrFeedbackLocale as qf where qf.languageId=?]]>
+	</query>
+	
+	<query name="getErrorCodes" >
+		<![CDATA[select er.errorCode, er.errorMessage from  ErrorCode as er]]>
+	</query>
+
+	<query name="getPGCodes" >
+		<![CDATA[select pg.pgCode, pg.pgMessage from  PGCode as pg]]>
+	</query>
+	
+</hibernate-mapping>

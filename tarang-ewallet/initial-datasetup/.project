@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>initial-datasetup</name>
+	<comment>initial datasetup service. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
+	<projects>
+		<project>util-service</project>
+		<project>fraudcheck-service</project>
+		<project>common-service</project>
+		<project>masterdata-service</project>
+		<project>email-service</project>
+		<project>crypt-service</project>
+		<project>http-service</project>
+		<project>customer-service</project>
+		<project>merchant-service</project>
+		<project>feemgmt-service</project>
+		<project>transaction-service</project>
+		<project>usermgmt-service</project>
+		<project>accountmgmt-service</project>
+		<project>audittrail-service</project>
+		<project>dispute-service</project>
+		<project>reports-service</project>
+		<project>reconcile-service</project>
+		<project>accountcloser-service</project>
+		<project>scheduler-service</project>
+		<project>prepaidcardmgmt-service</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+	</natures>
+</projectDescription>

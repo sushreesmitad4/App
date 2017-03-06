@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.tarang.ewallet.sms.model">
+		
+	<class name="OtpModel" table="WalletOTP" >
+		<id name="id" type="long" column="id" >
+			<generator class="native" />
+		</id>
+		<property name="otpNumber"  type="long" unique="true" not-null="true"/>
+		<property name="mobileCode" type="string" not-null="true" />
+		<property name="mobileNumber" type="string" not-null="true" />
+		<property name="customerId" type="long" />
+		<property name="emailId" type="string" not-null="true" />
+		<property name="otpDate" type="java.util.Date" not-null="true" />
+		<property name="otpExpDate" type="java.util.Date" not-null="true" />
+		<property name="isOtpExpired" type="boolean" />
+		<property name="message" type="string" not-null="true" />
+		<property name="otpModuleName" type="string" not-null="true" />
+		<property name="isSmsSent" type="boolean" />
+	</class>
+	
+</hibernate-mapping>

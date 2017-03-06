@@ -1,0 +1,46 @@
+package com.tarang.ewallet.walletui.controller.constants;
+
+public interface Login {
+	String MODEL_ATTRIBUTE_LOG_USER_NAME = "loginUserForm";
+	String MODEL_ATTRIBUTE_ERROR_NAME = "error";
+	String VIEW_RESOLVER_LOGIN_NAME = "admin.login";
+	String VIEW_RESOLVER_SESSION_EXPIRED_MERCHANT = "merchant.sessionExpired";
+	String VIEW_RESOLVER_SESSION_EXPIRED_CUSTOMER = "customer.sessionExpired";
+	String VIEW_RESOLVER_SESSION_EXPIRED_ADMIN = "admin.sessionExpired";
+	String VIEW_RESOLVER_SESSION_EXPIRED = "sessionExpired";
+	String VIEW_RESOLVER_INVALID_SESSION_NAME = "invalidSession";
+	String VIEW_RESOLVER_HOME_NAME = "home";
+	String VIEW_RESOLVER_CHECK_SESSION_NAME = "checkSession";
+	String APPLICATIONS_SESSION_NAME = "EWALLET_USER_APPLICATIONS";
+	String VIEW_RESOLVER_HOME_PAGE="wallet.home";
+	String VIEW_RESOLVER_CUSTOMER_LOGIN_PAGE="wallet.customer.login";
+	String VIEW_RESOLVER_MERCHANT_LOGIN_PAGE="wallet.merchant.login";
+	String VIEW_RESOLVER_CUSTOMER_FORGOT_PASSWORD_PAGE="wallet.customer.forgotpassword";
+	String VIEW_RESOLVER_MERCHANT_FORGOT_PASSWORD_PAGE="wallet.merchant.forgotpassword";
+	String FORGOT_PASSWORD_SUCCESS = "login.forgot.password.success";
+	String MERCHANT_LOGIN_SUCCESS_VIEW = "merchant";
+	String CUSTOMER_LOGIN_SUCCESS_VIEW = "customer";
+	String DEFAULT_VIEW = "admin";
+	String WALLET_LOGOUT = "wallet.logout";
+	String FORGOT_PASSWORD_FAIL = "login.forgot.password.fail";
+	String CUSTOMER_CHANGE_PASSWORD_VIEW = "customer.changepassword";
+	String MERCHANT_CHANGE_PASSWORD_VIEW = "merchant.changepassword";
+	String ADMIN_CHANGE_PASSWORD_VIEW = "admin.changepassword";
+	String CHANGE_PASSWORD_FAIL = "change.password.errmsg";
+	String CHANGE_PASSWORD_SUCCESS = "change.password.success";
+	String LOGIN_ERROR_INVALID_USERTYPE_CUS = "login.error.invalid.usertype.customer";
+	String LOGIN_ERROR_NO_ROLES = "login.error.no.roles";
+	String VIEW_RESOLVER_LOGIN_PAGE="wallet.login";
+	String VIEW_RESOLVER_LOGIN_CHANGEPASSWORD = "login.changepassword";
+	String FORGOT_PASSWORD_MAIL_SEND_FAIL = "login.forgot.password.mail.send.fail";
+	String PASSWORD_HISTORY_EXIST = "password.history.match.errmsg";
+	String LOGIN_ONE_TIME_IP_ADD_CODE = "login.onetime.ipaddrcode";
+	String CODE_VAR_TO_CHECK_IP_ADD = "code";
+	String FAILS_TO_RET_USER_AUTH = "fails.retrieve.user.authentication";
+	String FAILS_TO_RETRIEVE_USER_IP_ADD = "fails.to.retrieve.user.ip.add";
+	String CODE_DOES_NOT_MATCHES = "code.does.not.matches";
+	String CODE_REQUIRED = "code.required.errmsg";
+	String CODE_SENT_MAIL = "code.sent.sucess.msg";
+	String FORGOT_PASSWORD_FAILED_INACTIVE_USER = "forgot.password.failed.inactive.user.errmsg";
+	String FORGOT_PASSWORD_FAILED_ACCOUNT_REJECTED = "forgot.password.failed.account.rejected.errmsg";
+}
